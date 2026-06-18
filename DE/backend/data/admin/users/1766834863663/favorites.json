@@ -1,0 +1,28 @@
+{
+  "favorites": [
+    {
+      "id": "1766841978031",
+      "name": "riz ",
+      "category": "plats",
+      "price": 4000,
+      "image": "/assets/imgs/riz.png",
+      "addedAt": "2025-12-27T13:26:18.031Z"
+    },
+    {
+      "id": "1766841980603",
+      "name": "poulet",
+      "category": "plats",
+      "price": 2550,
+      "image": "/assets/imgs/1.png",
+      "addedAt": "2025-12-27T13:26:20.603Z"
+    },
+    {
+      "id": "1767095078586",
+      "name": "Sushi assortis",
+      "category": "entrees",
+      "price": 4500,
+      "image": "/assets/imgs/sushi.png",
+      "addedAt": "2025-12-30T11:44:38.586Z"
+    }
+  ]
+}

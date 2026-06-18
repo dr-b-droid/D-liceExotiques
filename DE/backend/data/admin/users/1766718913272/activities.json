@@ -1,0 +1,402 @@
+{
+  "activities": [
+    {
+      "id": "1781730944530",
+      "type": "order_update",
+      "icon": "shopping-bag",
+      "description": "Commande #ORD-1781 livrée",
+      "timestamp": "2026-06-17T21:15:44.530Z"
+    },
+    {
+      "id": "1781730921869",
+      "type": "order_update",
+      "icon": "shopping-bag",
+      "description": "Commande #ORD-1781 en préparation",
+      "timestamp": "2026-06-17T21:15:21.869Z"
+    },
+    {
+      "id": "1781730900006",
+      "type": "order_update",
+      "icon": "shopping-bag",
+      "description": "Commande #ORD-1767 livrée",
+      "timestamp": "2026-06-17T21:15:00.006Z"
+    },
+    {
+      "id": "1781730894842",
+      "type": "order_update",
+      "icon": "shopping-bag",
+      "description": "Commande #ORD-1767 confirmée",
+      "timestamp": "2026-06-17T21:14:54.842Z"
+    },
+    {
+      "id": "1781730849014",
+      "type": "order_placed",
+      "title": "Nouvelle commande",
+      "description": "Commande ORD-1781730849005 - 5000.00  fcfa",
+      "date": "2026-06-17T21:14:09.010Z",
+      "icon": "shopping-bag",
+      "color": "gold",
+      "relatedId": "ORD-1781730849005",
+      "timestamp": "2026-06-17T21:14:09.010Z"
+    },
+    {
+      "id": "1769250891323",
+      "type": "reservation_confirmed",
+      "title": "Réservation confirmée",
+      "description": "Table pour 2 - 2026-02-14, 11:34",
+      "date": "2026-01-24T10:34:51.283Z",
+      "icon": "calendar",
+      "color": "gold",
+      "relatedId": "RES-1769250891277",
+      "timestamp": "2026-01-24T10:34:51.283Z"
+    },
+    {
+      "id": "1768073239748",
+      "type": "event_update",
+      "icon": "star",
+      "description": "Demande d'événement refusée: Baptême",
+      "timestamp": "2026-01-10T19:27:19.748Z"
+    },
+    {
+      "id": "1768073216147",
+      "type": "order_update",
+      "icon": "shopping-bag",
+      "description": "Commande #ORD-1767 annulée",
+      "timestamp": "2026-01-10T19:26:56.147Z"
+    },
+    {
+      "id": "1768073005434",
+      "type": "reservation_update",
+      "icon": "calendar",
+      "description": "Réservation annulée pour le 31/12/2025",
+      "timestamp": "2026-01-10T19:23:25.434Z"
+    },
+    {
+      "id": "1768072996494",
+      "type": "reservation_update",
+      "icon": "calendar",
+      "description": "Réservation annulée pour le 31/12/2025",
+      "timestamp": "2026-01-10T19:23:16.494Z"
+    },
+    {
+      "id": "1768072966386",
+      "type": "reservation_update",
+      "icon": "calendar",
+      "description": "Réservation annulée pour le 10/01/2026",
+      "timestamp": "2026-01-10T19:22:46.386Z"
+    },
+    {
+      "id": "1768072961836",
+      "type": "reservation_update",
+      "icon": "calendar",
+      "description": "Réservation annulée pour le 27/01/2026",
+      "timestamp": "2026-01-10T19:22:41.836Z"
+    },
+    {
+      "id": "1768072958390",
+      "type": "reservation_update",
+      "icon": "calendar",
+      "description": "Réservation annulée pour le 27/01/2026",
+      "timestamp": "2026-01-10T19:22:38.390Z"
+    },
+    {
+      "id": "1768072952450",
+      "type": "reservation_update",
+      "icon": "calendar",
+      "description": "Réservation confirmée pour le 27/01/2026",
+      "timestamp": "2026-01-10T19:22:32.450Z"
+    },
+    {
+      "id": "1768072945119",
+      "type": "reservation_update",
+      "icon": "calendar",
+      "description": "Réservation annulée pour le 03/02/2026",
+      "timestamp": "2026-01-10T19:22:25.119Z"
+    },
+    {
+      "id": "1768072327420",
+      "type": "reservation_update",
+      "icon": "calendar",
+      "description": "Réservation confirmée pour le 03/02/2026",
+      "timestamp": "2026-01-10T19:12:07.420Z"
+    },
+    {
+      "id": "1768072322556",
+      "type": "reservation_update",
+      "icon": "calendar",
+      "description": "Réservation annulée pour le 03/02/2026",
+      "timestamp": "2026-01-10T19:12:02.556Z"
+    },
+    {
+      "id": "1768072303602",
+      "type": "reservation_update",
+      "icon": "calendar",
+      "description": "Réservation confirmée pour le 03/02/2026",
+      "timestamp": "2026-01-10T19:11:43.602Z"
+    },
+    {
+      "id": "1768072051148",
+      "type": "order_update",
+      "icon": "shopping-bag",
+      "description": "Commande #ORD-1768 livrée",
+      "timestamp": "2026-01-10T19:07:31.148Z"
+    },
+    {
+      "id": "1768071997729",
+      "type": "order_placed",
+      "title": "Nouvelle commande",
+      "description": "Commande ORD-1768071997720 - 2500.00  fcfa",
+      "date": "2026-01-10T19:06:37.726Z",
+      "icon": "shopping-bag",
+      "color": "gold",
+      "relatedId": "ORD-1768071997720",
+      "timestamp": "2026-01-10T19:06:37.726Z"
+    },
+    {
+      "id": "1768070952234",
+      "type": "reservation_update",
+      "icon": "calendar",
+      "description": "Réservation confirmée pour le 03/02/2026",
+      "timestamp": "2026-01-10T18:49:12.234Z"
+    },
+    {
+      "id": "1768070947777",
+      "type": "reservation_update",
+      "icon": "calendar",
+      "description": "Réservation annulée pour le 03/02/2026",
+      "timestamp": "2026-01-10T18:49:07.777Z"
+    },
+    {
+      "id": "1767656636117",
+      "type": "order_update",
+      "icon": "shopping-bag",
+      "description": "Commande #ORD-1767 annulée",
+      "timestamp": "2026-01-05T23:43:56.117Z"
+    },
+    {
+      "id": "1767656627134",
+      "type": "order_update",
+      "icon": "shopping-bag",
+      "description": "Commande #ORD-1766 livrée",
+      "timestamp": "2026-01-05T23:43:47.134Z"
+    },
+    {
+      "id": "1767656621612",
+      "type": "order_update",
+      "icon": "shopping-bag",
+      "description": "Commande #ORD-1766 livrée",
+      "timestamp": "2026-01-05T23:43:41.613Z"
+    },
+    {
+      "id": "1767656587319",
+      "type": "order_update",
+      "icon": "shopping-bag",
+      "description": "Commande #ORD-1767 livrée",
+      "timestamp": "2026-01-05T23:43:07.319Z"
+    },
+    {
+      "id": "1767656553590",
+      "type": "order_update",
+      "icon": "shopping-bag",
+      "description": "Commande #ORD-1767 en préparation",
+      "timestamp": "2026-01-05T23:42:33.591Z"
+    },
+    {
+      "id": "1767656521877",
+      "type": "order_update",
+      "icon": "shopping-bag",
+      "description": "Commande #ORD-1767 confirmée",
+      "timestamp": "2026-01-05T23:42:01.877Z"
+    },
+    {
+      "id": "1767655879858",
+      "type": "order_update",
+      "icon": "shopping-bag",
+      "description": "Commande #ORD-1766 confirmée",
+      "timestamp": "2026-01-05T23:31:19.858Z"
+    },
+    {
+      "id": "1767321831558",
+      "type": "event_update",
+      "icon": "star",
+      "description": "Demande d'événement refusée: Baptême",
+      "timestamp": "2026-01-02T02:43:51.558Z"
+    },
+    {
+      "id": "1767321808682",
+      "type": "event_request",
+      "title": "Demande d'événement",
+      "description": "Baptême - 2026-01-26",
+      "date": "2026-01-02T02:43:28.679Z",
+      "icon": "star",
+      "color": "africanred",
+      "relatedId": "EVT-1767321808674",
+      "timestamp": "2026-01-02T02:43:28.679Z"
+    },
+    {
+      "id": "1767321748692",
+      "type": "order_update",
+      "icon": "shopping-bag",
+      "description": "Commande #ORD-1767 annulée",
+      "timestamp": "2026-01-02T02:42:28.692Z"
+    },
+    {
+      "id": "1767321721757",
+      "type": "order_placed",
+      "title": "Nouvelle commande",
+      "description": "Commande ORD-1767321721747 - 5000.00  fcfa",
+      "date": "2026-01-02T02:42:01.752Z",
+      "icon": "shopping-bag",
+      "color": "gold",
+      "relatedId": "ORD-1767321721747",
+      "timestamp": "2026-01-02T02:42:01.752Z"
+    },
+    {
+      "id": "1767321467956",
+      "type": "event_update",
+      "icon": "star",
+      "description": "Demande d'événement confirmée: Cocktail",
+      "timestamp": "2026-01-02T02:37:47.956Z"
+    },
+    {
+      "id": "1767318258575",
+      "type": "order_update",
+      "icon": "shopping-bag",
+      "description": "Commande #ORD-1767 en préparation",
+      "timestamp": "2026-01-02T01:44:18.576Z"
+    },
+    {
+      "id": "1767318236077",
+      "type": "event_request",
+      "title": "Demande d'événement",
+      "description": "Cocktail - 2026-01-26",
+      "date": "2026-01-02T01:43:56.074Z",
+      "icon": "star",
+      "color": "africanred",
+      "relatedId": "EVT-1767318236069",
+      "timestamp": "2026-01-02T01:43:56.074Z"
+    },
+    {
+      "id": "1767318177991",
+      "type": "reservation_confirmed",
+      "title": "Réservation confirmée",
+      "description": "Table pour 1 - 2026-02-03, 17:45",
+      "date": "2026-01-02T01:42:57.988Z",
+      "icon": "calendar",
+      "color": "gold",
+      "relatedId": "RES-1767318177981",
+      "timestamp": "2026-01-02T01:42:57.988Z"
+    },
+    {
+      "id": "1767318120487",
+      "type": "order_placed",
+      "title": "Nouvelle commande",
+      "description": "Commande ORD-1767318120475 - 2500.00  fcfa",
+      "date": "2026-01-02T01:42:00.482Z",
+      "icon": "shopping-bag",
+      "color": "gold",
+      "relatedId": "ORD-1767318120475",
+      "timestamp": "2026-01-02T01:42:00.482Z"
+    },
+    {
+      "id": "1767244355301",
+      "type": "order_update",
+      "icon": "shopping-bag",
+      "description": "Commande #ORD-1767 en préparation",
+      "timestamp": "2026-01-01T05:12:35.301Z"
+    },
+    {
+      "id": "1767244326595",
+      "type": "order_placed",
+      "title": "Nouvelle commande",
+      "description": "Commande ORD-1767244326591 - 10000.00  fcfa",
+      "date": "2026-01-01T05:12:06.594Z",
+      "icon": "shopping-bag",
+      "color": "gold",
+      "relatedId": "ORD-1767244326591",
+      "timestamp": "2026-01-01T05:12:06.594Z"
+    },
+    {
+      "id": "1767241219574",
+      "type": "reservation_confirmed",
+      "title": "Réservation confirmée",
+      "description": "Table pour 1 - 2026-01-27, 11:20",
+      "date": "2026-01-01T04:20:19.572Z",
+      "icon": "calendar",
+      "color": "gold",
+      "relatedId": "RES-1767241219570",
+      "timestamp": "2026-01-01T04:20:19.572Z"
+    },
+    {
+      "id": "1767240994961",
+      "type": "order_update",
+      "icon": "shopping-bag",
+      "description": "Commande #ORD-1767 annulée",
+      "timestamp": "2026-01-01T04:16:34.961Z"
+    },
+    {
+      "id": "1767240968120",
+      "type": "order_placed",
+      "title": "Nouvelle commande",
+      "description": "Commande ORD-1767240968104 - 10000.00  fcfa",
+      "date": "2026-01-01T04:16:08.105Z",
+      "icon": "shopping-bag",
+      "color": "gold",
+      "relatedId": "ORD-1767240968104",
+      "timestamp": "2026-01-01T04:16:08.105Z"
+    },
+    {
+      "id": "1767239586055",
+      "type": "event_update",
+      "icon": "star",
+      "description": "Demande d'événement refusée: Gala",
+      "timestamp": "2026-01-01T03:53:06.055Z"
+    },
+    {
+      "id": "1767239512777",
+      "type": "event_request",
+      "title": "Demande d'événement",
+      "description": "Gala - 2026-01-21",
+      "date": "2026-01-01T03:51:52.775Z",
+      "icon": "star",
+      "color": "africanred",
+      "relatedId": "EVT-1767239512773",
+      "timestamp": "2026-01-01T03:51:52.775Z"
+    },
+    {
+      "id": "1767235941405",
+      "type": "order_update",
+      "icon": "shopping-bag",
+      "description": "Commande #ORD-1766 livrée",
+      "timestamp": "2026-01-01T02:52:21.405Z"
+    },
+    {
+      "id": "1767235936242",
+      "type": "order_update",
+      "icon": "shopping-bag",
+      "description": "Commande #ORD-1766 livrée",
+      "timestamp": "2026-01-01T02:52:16.242Z"
+    },
+    {
+      "id": "1767235930285",
+      "type": "order_update",
+      "icon": "shopping-bag",
+      "description": "Commande #ORD-1766 livrée",
+      "timestamp": "2026-01-01T02:52:10.285Z"
+    },
+    {
+      "id": "1767235927092",
+      "type": "order_update",
+      "icon": "shopping-bag",
+      "description": "Commande #ORD-1766 confirmée",
+      "timestamp": "2026-01-01T02:52:07.093Z"
+    },
+    {
+      "id": "1767235916090",
+      "type": "order_update",
+      "icon": "shopping-bag",
+      "description": "Commande #ORD-1767 en livraison",
+      "timestamp": "2026-01-01T02:51:56.090Z"
+    }
+  ]
+}

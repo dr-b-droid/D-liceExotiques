@@ -1,0 +1,82 @@
+{
+  "users": [
+    {
+      "id": "1766718913272",
+      "username": "bemodjeu_1766718913100",
+      "email": "bemodjeu@gmail.com",
+      "firstName": "brandon",
+      "lastName": "emodjeu",
+      "name": "brandon emodjeu",
+      "phone": "680210502",
+      "createdAt": "2025-12-26T03:15:13.272Z",
+      "lastLogin": "2026-06-17T14:51:19.174Z",
+      "emailVerified": false,
+      "loyaltyPoints": 0
+    },
+    {
+      "id": "1766834863663",
+      "username": "hernanna173_1766834863370",
+      "email": "hernanna173@gmail.com",
+      "firstName": "Anna",
+      "lastName": "Francis",
+      "name": "Anna Francis",
+      "phone": "680212109",
+      "createdAt": "2025-12-27T11:27:43.663Z",
+      "lastLogin": "2026-01-14T00:15:50.385Z",
+      "emailVerified": false,
+      "loyaltyPoints": 0
+    },
+    {
+      "id": "1768081866345",
+      "username": "GC_1768081866213",
+      "email": "GC@gmail.com",
+      "firstName": "George ",
+      "lastName": "Clémenceau",
+      "name": "George  Clémenceau",
+      "phone": "+237670662337",
+      "createdAt": "2026-01-10T21:51:06.345Z",
+      "lastLogin": "2026-01-10T22:12:53.420Z",
+      "emailVerified": false,
+      "loyaltyPoints": 0
+    },
+    {
+      "id": "1768082886120",
+      "username": "codinglearnia_1768082885991",
+      "email": "codinglearnia@gmail.com",
+      "firstName": "code",
+      "lastName": "L",
+      "name": "code L",
+      "phone": "+237123456789",
+      "createdAt": "2026-01-10T22:08:06.121Z",
+      "lastLogin": null,
+      "emailVerified": false,
+      "loyaltyPoints": 0
+    },
+    {
+      "id": "1768083863996",
+      "username": "xenouston_1768083863886",
+      "email": "xenouston@gmail.com",
+      "firstName": "xeno",
+      "lastName": "uston",
+      "name": "xeno uston",
+      "phone": "666666666",
+      "createdAt": "2026-01-10T22:24:23.996Z",
+      "lastLogin": "2026-01-10T22:39:07.388Z",
+      "emailVerified": false,
+      "loyaltyPoints": 0
+    },
+    {
+      "id": "1768348842748",
+      "username": "gis_1768348842522",
+      "email": "gis@gmail.com",
+      "firstName": "brenda",
+      "lastName": "gis",
+      "name": "brenda gis",
+      "phone": "+237670662337",
+      "createdAt": "2026-01-14T00:00:42.748Z",
+      "lastLogin": "2026-05-22T16:04:11.931Z",
+      "emailVerified": false,
+      "loyaltyPoints": 0
+    }
+  ]
+}

@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organisation d'Evénements  </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/assets/imgs/logo.png" type="image/x-icon">
+    <script src="/components/tailwindcss.js"></script>
+    <script src="/components/navigation.js"></script>
+    <script src="/components/footer.js"></script>
+    <script src="/components/feather.min.js"></script>
+    <script src="/js/api.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: '#D4AF37',
+                        deepblack: '#0A0A0A',
+                        emerald: '#50C878',
+                        africanred: '#E32636',
+                        richbrown: '#5C4033',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-deepblack text-white font-sans overflow-x-hidden">
+    <!-- Main Navigation -->
+    <custom-navigation></custom-navigation>
+
+    <!-- Hero Section -->
+    <section class="relative h-[60vh] overflow-hidden">
+        <div class="absolute inset-0 bg-black/70 z-10"></div>
+        <div class="absolute inset-0">
+            <img src="/assets/imgs/img_event.png" alt="Evénements" class="w-full h-full object-cover">
+        </div>
+        
+        <div class="relative z-20 h-full flex flex-col justify-center items-center text-center px-4">
+            <h1 class="text-5xl md:text-7xl font-serif mb-6 text-gold animate-fade-in">
+                Organisez Votre Evénement
+            </h1>
+            <p class="text-xl md:text-2xl max-w-2xl text-white/90 animate-fade-in-delay">
+                Des moments inoubliables dans un cadre d'exception
+            </p>
+        </div>
+    </section>
+
+    <!-- Event Types Showcase -->
+    <section class="py-16 px-4 md:px-8 lg:px-16 bg-richbrown/10">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-serif text-center mb-4 text-gold">Nos Evénements Sur Mesure</h2>
+            <p class="text-center text-white/70 mb-12 max-w-2xl mx-auto">
+                Du mariage intime au gala d'entreprise, nous créons des expériences culinaires exceptionnelles adaptées à chaque occasion
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="relative group overflow-hidden rounded-xl">
+                    <img src="/assets/imgs/mariage.png" alt="Mariages" class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-deepblack via-deepblack/50 to-transparent flex items-end p-6">
+                        <div>
+                            <h3 class="text-2xl font-serif text-gold mb-2">Mariages</h3>
+                            <p class="text-white/80 text-sm">Célébrations élégantes jusqu'à 200 invités</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative group overflow-hidden rounded-xl">
+                    <img src="/assets/imgs/corporate.png" alt="Evénements d'entreprise" class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-deepblack via-deepblack/50 to-transparent flex items-end p-6">
+                        <div>
+                            <h3 class="text-2xl font-serif text-gold mb-2">Corporate</h3>
+                            <p class="text-white/80 text-sm">Séminaires, galas et cocktails professionnels</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative group overflow-hidden rounded-xl">
+                    <img src="/assets/imgs/img_intern.png" alt="Célébrations" class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-deepblack via-deepblack/50 to-transparent flex items-end p-6">
+                        <div>
+                            <h3 class="text-2xl font-serif text-gold mb-2">Célébrations</h3>
+                            <p class="text-white/80 text-sm">Anniversaires, baptêmes et fêtes privées</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Why Choose Us Section -->
+    <section class="py-20 px-4 md:px-8 lg:px-16 bg-richbrown/10">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-serif text-center mb-12 text-gold">Pourquoi Choisir Délices Exotiques ?</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="bg-gold/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-feather="star" class="text-gold" width="32" height="32"></i>
+                    </div>
+                    <h3 class="text-xl font-serif text-gold mb-3">Cuisine d'Exception</h3>
+                    <p class="text-white/70">Menu gastronomique étoilé adapté à vos gouts</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="bg-gold/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-feather="smile" class="text-gold" width="32" height="32"></i>
+                    </div>
+                    <h3 class="text-xl font-serif text-gold mb-3">Service Personnalisé</h3>
+                    <p class="text-white/70">Une équipe dédiée pour chaque événement</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="bg-gold/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-feather="map-pin" class="text-gold" width="32" height="32"></i>
+                    </div>
+                    <h3 class="text-xl font-serif text-gold mb-3">Cadre Unique</h3>
+                    <p class="text-white/70">Espaces élégants avec vue panoramique</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="bg-gold/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-feather="clock" class="text-gold" width="32" height="32"></i>
+                    </div>
+                    <h3 class="text-xl font-serif text-gold mb-3">Réactivité 24h</h3>
+                    <p class="text-white/70">Réponse garantie sous 24 heures</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Request Form -->
+    <section class="py-20 px-4 md:px-8 lg:px-16" id="event-form">
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-richbrown/20 border border-gold/20 rounded-xl p-8 md:p-12 backdrop-blur-sm">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl md:text-4xl font-serif mb-4 text-gold">Demande d'Organisation</h2>
+                    <p class="text-white/70">Remplissez le formulaire ci-dessous et notre équipe vous contactera dans les 24 heures</p>
+                </div>
+
+                <form id="eventForm" class="space-y-8">
+                    <!-- Step 1: Event Type -->
+                    <div class="form-step active">
+                        <div class="mb-6">
+                            <label class="block text-white/90 text-lg mb-4 font-medium">
+                                <i data-feather="calendar" class="inline w-5 h-5 mr-2 text-gold"></i>
+                                Type d'événement *
+                            </label>
+                            <p class="text-white/60 text-sm mb-4">Sélectionnez le type d'événement ou créez le votre</p>
+                            
+                            <div class="flex flex-wrap gap-3 mb-4" id="event-tags">
+                                <button type="button" class="event-tag px-6 py-3 rounded-full border border-gold/30 hover:bg-gold hover:text-deepblack transition-all" data-value="Mariage">
+                                    <i data-feather="heart" class="inline w-4 h-4 mr-2"></i>
+                                    Mariage
+                                </button>
+                                <button type="button" class="event-tag px-6 py-3 rounded-full border border-gold/30 hover:bg-gold hover:text-deepblack transition-all" data-value="Anniversaire">
+                                    <i data-feather="gift" class="inline w-4 h-4 mr-2"></i>
+                                    Anniversaire
+                                </button>
+                                <button type="button" class="event-tag px-6 py-3 rounded-full border border-gold/30 hover:bg-gold hover:text-deepblack transition-all" data-value="Evénement d'entreprise">
+                                    <i data-feather="briefcase" class="inline w-4 h-4 mr-2"></i>
+                                    Corporate
+                                </button>
+                                <button type="button" class="event-tag px-6 py-3 rounded-full border border-gold/30 hover:bg-gold hover:text-deepblack transition-all" data-value="Baptême">
+                                    <i data-feather="star" class="inline w-4 h-4 mr-2"></i>
+                                    Baptême
+                                </button>
+                                <button type="button" class="event-tag px-6 py-3 rounded-full border border-gold/30 hover:bg-gold hover:text-deepblack transition-all" data-value="Gala">
+                                    <i data-feather="award" class="inline w-4 h-4 mr-2"></i>
+                                    Gala
+                                </button>
+                                <button type="button" class="event-tag px-6 py-3 rounded-full border border-gold/30 hover:bg-gold hover:text-deepblack transition-all" data-value="Cocktail">
+                                    <i data-feather="coffee" class="inline w-4 h-4 mr-2"></i>
+                                    Cocktail
+                                </button>
+                                <button type="button" class="event-tag px-6 py-3 rounded-full border border-gold/30 hover:bg-gold hover:text-deepblack transition-all" data-value="Séminaire">
+                                    <i data-feather="users" class="inline w-4 h-4 mr-2"></i>
+                                    Séminaire
+                                </button>
+                                <button type="button" class="event-tag px-6 py-3 rounded-full border border-gold/30 hover:bg-gold hover:text-deepblack transition-all" data-value="Autre">
+                                    <i data-feather="more-horizontal" class="inline w-4 h-4 mr-2"></i>
+                                    Autre
+                                </button>
+                            </div>
+
+                            <div id="custom-event-container" class="hidden">
+                                <label class="block text-white/80 text-sm mb-2">Précisez votre type d'événement</label>
+                                <input type="text" id="custom-event-type" class="w-full bg-deepblack/50 border border-gold/20 rounded-lg px-4 py-3 text-white focus:border-gold focus:outline-none" placeholder="Ex: Fiançailles, Remise de diplome...">
+                            </div>
+
+                            <input type="hidden" id="selected-event-type" name="eventType" required>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Personal Information -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block text-white/80 mb-2">
+                                <i data-feather="user" class="inline w-4 h-4 mr-2 text-gold"></i>
+                                Nom complet *
+                            </label>
+                            <input type="text" id="name" name="name" required class="w-full bg-deepblack/50 border border-gold/20 rounded-lg px-4 py-3 text-white focus:border-gold focus:outline-none" placeholder="Votre nom">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-white/80 mb-2">
+                                <i data-feather="mail" class="inline w-4 h-4 mr-2 text-gold"></i>
+                                Email *
+                            </label>
+                            <input type="email" id="email" name="email" required class="w-full bg-deepblack/50 border border-gold/20 rounded-lg px-4 py-3 text-white focus:border-gold focus:outline-none" placeholder="votre@email.com">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="phone" class="block text-white/80 mb-2">
+                                <i data-feather="phone" class="inline w-4 h-4 mr-2 text-gold"></i>
+                                Téléphone *
+                            </label>
+                            <input type="tel" id="phone" name="phone" required class="w-full bg-deepblack/50 border border-gold/20 rounded-lg px-4 py-3 text-white focus:border-gold focus:outline-none" placeholder="+33 6 12 34 56 78">
+                        </div>
+                        <div>
+                            <label for="company" class="block text-white/80 mb-2">
+                                <i data-feather="briefcase" class="inline w-4 h-4 mr-2 text-gold"></i>
+                                Entreprise (optionnel)
+                            </label>
+                            <input type="text" id="company" name="company" class="w-full bg-deepblack/50 border border-gold/20 rounded-lg px-4 py-3 text-white focus:border-gold focus:outline-none" placeholder="Nom de l'entreprise">
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Event Details -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="date" class="block text-white/80 mb-2">
+                                <i data-feather="calendar" class="inline w-4 h-4 mr-2 text-gold"></i>
+                                Date de l'événement *
+                            </label>
+                            <input type="date" id="date" name="date" required class="w-full bg-deepblack/50 border border-gold/20 rounded-lg px-4 py-3 text-white focus:border-gold focus:outline-none">
+                        </div>
+                        <div>
+                            <label for="time" class="block text-white/80 mb-2">
+                                <i data-feather="clock" class="inline w-4 h-4 mr-2 text-gold"></i>
+                                Heure approximative
+                            </label>
+                            <input type="time" id="time" name="time" class="w-full bg-deepblack/50 border border-gold/20 rounded-lg px-4 py-3 text-white focus:border-gold focus:outline-none">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="guests" class="block text-white/80 mb-2">
+                            <i data-feather="users" class="inline w-4 h-4 mr-2 text-gold"></i>
+                            Nombre approximatif d'invités *
+                        </label>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                            <button type="button" class="guest-btn px-4 py-3 rounded-lg border border-gold/30 hover:bg-gold/10 transition-all" data-value="10-30">
+                                10-30
+                            </button>
+                            <button type="button" class="guest-btn px-4 py-3 rounded-lg border border-gold/30 hover:bg-gold/10 transition-all" data-value="30-50">
+                                30-50
+                            </button>
+                            <button type="button" class="guest-btn px-4 py-3 rounded-lg border border-gold/30 hover:bg-gold/10 transition-all" data-value="50-100">
+                                50-100
+                            </button>
+                            <button type="button" class="guest-btn px-4 py-3 rounded-lg border border-gold/30 hover:bg-gold/10 transition-all" data-value="100+">
+                                100+
+                            </button>
+                        </div>
+                        <input type="text" id="guests-custom" name="guests" class="w-full mt-3 bg-deepblack/50 border border-gold/20 rounded-lg px-4 py-3 text-white focus:border-gold focus:outline-none" placeholder="Ou entrez un nombre précis">
+                    </div>
+
+                    <div>
+                        <label for="budget" class="block text-white/80 mb-2">
+                            <i data-feather="dollar-sign" class="inline w-4 h-4 mr-2 text-gold"></i>
+                            Budget estimé par personne
+                        </label>
+                        <select id="budget" name="budget" class="w-full bg-deepblack/50 border border-gold/20 rounded-lg px-4 py-3 text-white focus:border-gold focus:outline-none">
+                            <option value="">Sélectionnez une fourchette</option>
+                            <option value="30-50">30 fcfa - 50 fcfa</option>
+                            <option value="50-80">50 fcfa - 80 fcfa</option>
+                            <option value="80-120">80 fcfa - 120 fcfa</option>
+                            <option value="120+">120 fcfa+</option>
+                        </select>
+                    </div>
+
+                    <!-- Step 4: Additional Services -->
+                    <div>
+                        <label class="block text-white/80 mb-4">
+                            <i data-feather="check-square" class="inline w-4 h-4 mr-2 text-gold"></i>
+                            Services souhaités (optionnel)
+                        </label>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <label class="flex items-center gap-3 bg-deepblack/30 border border-gold/20 rounded-lg p-4 cursor-pointer hover:border-gold/50 transition-all">
+                                <input type="checkbox" name="services" value="Menu personnalisé" class="w-5 h-5 bg-deepblack border-gold/30 rounded text-gold focus:ring-gold">
+                                <span class="text-white/90">Menu personnalisé</span>
+                            </label>
+                            <label class="flex items-center gap-3 bg-deepblack/30 border border-gold/20 rounded-lg p-4 cursor-pointer hover:border-gold/50 transition-all">
+                                <input type="checkbox" name="services" value="Décoration" class="w-5 h-5 bg-deepblack border-gold/30 rounded text-gold focus:ring-gold">
+                                <span class="text-white/90">Décoration thématique</span>
+                            </label>
+                            <label class="flex items-center gap-3 bg-deepblack/30 border border-gold/20 rounded-lg p-4 cursor-pointer hover:border-gold/50 transition-all">
+                                <input type="checkbox" name="services" value="DJ/Musique" class="w-5 h-5 bg-deepblack border-gold/30 rounded text-gold focus:ring-gold">
+                                <span class="text-white/90">DJ / Musique live</span>
+                            </label>
+                            <label class="flex items-center gap-3 bg-deepblack/30 border border-gold/20 rounded-lg p-4 cursor-pointer hover:border-gold/50 transition-all">
+                                <input type="checkbox" name="services" value="Photographe" class="w-5 h-5 bg-deepblack border-gold/30 rounded text-gold focus:ring-gold">
+                                <span class="text-white/90">Photographe professionnel</span>
+                            </label>
+                            <label class="flex items-center gap-3 bg-deepblack/30 border border-gold/20 rounded-lg p-4 cursor-pointer hover:border-gold/50 transition-all">
+                                <input type="checkbox" name="services" value="Salon VIP" class="w-5 h-5 bg-deepblack border-gold/30 rounded text-gold focus:ring-gold">
+                                <span class="text-white/90">Salon VIP privé</span>
+                            </label>
+                            <label class="flex items-center gap-3 bg-deepblack/30 border border-gold/20 rounded-lg p-4 cursor-pointer hover:border-gold/50 transition-all">
+                                <input type="checkbox" name="services" value="Service traiteur" class="w-5 h-5 bg-deepblack border-gold/30 rounded text-gold focus:ring-gold">
+                                <span class="text-white/90">Service traiteur externe</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Step 5: Description -->
+                    <div>
+                        <label for="description" class="block text-white/80 mb-2">
+                            <i data-feather="file-text" class="inline w-4 h-4 mr-2 text-gold"></i>
+                            Description de votre événement *
+                        </label>
+                        <p class="text-white/60 text-sm mb-2">Parlez-nous de votre vision, vos attentes, et tout détail important</p>
+                        <textarea id="description" name="description" required rows="6" class="w-full bg-deepblack/50 border border-gold/20 rounded-lg px-4 py-3 text-white focus:border-gold focus:outline-none resize-none" placeholder="Décrivez votre événement : thème, ambiance souhaitée, préférences culinaires, contraintes particulières..."></textarea>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="pt-4">
+                        <button type="submit" class="w-full bg-gold hover:bg-gold/90 text-deepblack font-medium py-4 px-6 rounded-lg transition-all transform hover:scale-[1.02] flex items-center justify-center gap-2 text-lg">
+                            <i data-feather="send" width="20" height="20"></i>
+                            Envoyer ma demande
+                        </button>
+                        <p class="text-center text-white/60 text-sm mt-4">
+                            <i data-feather="shield" class="inline w-4 h-4 mr-1"></i>
+                            Vos informations sont sécurisées et confidentielles
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="fixed inset-0 bg-black/80 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-richbrown/90 border-2 border-gold/50 rounded-xl p-8 md:p-12 max-w-lg w-full text-center transform scale-0 transition-transform duration-500" id="modal-content">
+            <div class="bg-gold/10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                <i data-feather="check-circle" class="text-gold" width="48" height="48"></i>
+            </div>
+            <h3 class="text-3xl font-serif text-gold mb-4">Demande Envoyée !</h3>
+            <p class="text-white/90 mb-6 text-lg">
+                Merci pour votre demande d'organisation d'événement. Notre équipe va étudier votre projet et vous contactera dans les <strong class="text-gold">24 heures</strong>.
+            </p>
+            <div class="bg-deepblack/30 border border-gold/20 rounded-lg p-4 mb-6">
+                <p class="text-white/70 text-sm mb-2">Vous recevrez un email de confirmation à :</p>
+                <p class="text-gold font-medium" id="confirmation-email"></p>
+            </div>
+            <button onclick="closeModal()" class="bg-gold hover:bg-gold/90 text-deepblack font-medium py-3 px-8 rounded-lg transition-all">
+                Parfait, merci !
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer Component -->
+    <script src="components/footer.js"></script>
+    <custom-footer></custom-footer>
+
+    
+    <script>
+        // Event Type Selection
+        const eventTags = document.querySelectorAll('.event-tag');
+        const customEventContainer = document.getElementById('custom-event-container');
+        const customEventInput = document.getElementById('custom-event-type');
+        const selectedEventType = document.getElementById('selected-event-type');
+
+        eventTags.forEach(tag => {
+            tag.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all tags
+                eventTags.forEach(t => {
+                    t.classList.remove('bg-gold', 'text-deepblack', 'border-gold');
+                    t.classList.add('border-gold/30');
+                });
+                
+                // Add active class to clicked tag
+                this.classList.add('bg-gold', 'text-deepblack', 'border-gold');
+                this.classList.remove('border-gold/30');
+                
+                const value = this.dataset.value;
+                
+                if (value === 'Autre') {
+                    customEventContainer.classList.remove('hidden');
+                    customEventInput.required = true;
+                    selectedEventType.value = '';
+                } else {
+                    customEventContainer.classList.add('hidden');
+                    customEventInput.required = false;
+                    customEventInput.value = '';
+                    selectedEventType.value = value;
+                }
+                
+                feather.replace();
+            });
+        });
+
+        // Update selected event type when custom input changes
+        customEventInput.addEventListener('input', function() {
+            selectedEventType.value = this.value;
+        });
+
+        // Guest Number Selection
+        const guestBtns = document.querySelectorAll('.guest-btn');
+        const guestsCustom = document.getElementById('guests-custom');
+
+        guestBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                guestBtns.forEach(b => {
+                    b.classList.remove('bg-gold', 'text-deepblack', 'border-gold');
+                    b.classList.add('border-gold/30');
+                });
+                
+                this.classList.add('bg-gold', 'text-deepblack', 'border-gold');
+                this.classList.remove('border-gold/30');
+                
+                guestsCustom.value = this.dataset.value;
+            });
+        });
+
+        // Clear guest buttons selection when typing custom number
+        guestsCustom.addEventListener('input', function() {
+            guestBtns.forEach(b => {
+                b.classList.remove('bg-gold', 'text-deepblack', 'border-gold');
+                b.classList.add('border-gold/30');
+            });
+        });
+
+        
+    // Form Submission
+    const eventForm = document.getElementById('eventForm');
+    const successModal = document.getElementById('success-modal');
+    const modalContent = document.getElementById('modal-content');
+    const confirmationEmail = document.getElementById('confirmation-email');
+    function closeModal(){
+        setTimeout(() => {
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-10');
+        }, 10);
+        successModal.classList.add('hidden');       
+    }
+    eventForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        // Validate event type
+        if (!selectedEventType.value) {
+            notify.info('Veuillez sélectionner un type d\'événement');
+            return;
+        }
+        
+        // Collect form data
+        const formData = new FormData(eventForm);
+        const data = {};
+        
+        formData.forEach((value, key) => {
+            if (key === 'services') {
+                if (!data[key]) data[key] = [];
+                data[key].push(value);
+            } else {
+                data[key] = value;
+            }
+        });
+        
+        // Add event type
+        data.eventType = selectedEventType.value;
+        
+        // Vérifier si l'utilisateur est connecté
+        const isAuthenticated = window.authManager && window.authManager.isAuthenticated();
+        
+        try {
+            // Désactiver le bouton de soumission
+            const submitBtn = eventForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i data-feather="loader" width="20" height="20" class="animate-spin"></i> Envoi en cours...';
+            submitBtn.disabled = true;
+            feather.replace();
+            
+            let response;
+            
+            if (isAuthenticated) {
+                // Si connecté, envoyer via l'API
+                response = await window.api.createEvent(data);
+                
+                if (response.success) {
+                    console.log('Event Request Data:', data);
+                    
+                    // Show success modal
+                    confirmationEmail.textContent = data.email;
+                    successModal.classList.remove('hidden');
+                    
+                    setTimeout(() => {
+                        modalContent.classList.add('scale-100');
+                    }, 10);
+                } else {
+                    throw new Error(response.message || 'Erreur lors de l\'envoi');
+                }
+            } else {
+                // Si non connecté, proposer la connexion ou continuer sans compte
+                if (confirm('Voulez-vous vous connecter pour sauvegarder cette demande dans votre profil ?\n\nCliquez sur "OK" pour vous connecter, ou "Annuler" pour continuer sans compte.')) {
+                    // Sauvegarder les données du formulaire
+                    sessionStorage.setItem('pendingEventRequest', JSON.stringify(data));
+                    window.location.href = 'auth?form=login&redirect=evenements.html';
+                    return;
+                } else {
+                    // Continuer sans connexion - simuler l'envoi
+                    console.log('Event Request Data (non authentifié):', data);
+                    
+                    // Show success modal
+                    confirmationEmail.textContent = data.email;
+                    successModal.classList.remove('hidden');
+                    
+                    setTimeout(() => {
+                        modalContent.classList.add('scale-100');
+                    }, 10);
+                    
+                    // Restaurer le bouton
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    feather.replace();
+                }
+            }
+        } catch (error) {
+            console.error('Event submission error:', error);
+            notify.info('Erreur lors de l\'envoi de la demande: ' + error.message);
+            
+            // Restaurer le bouton
+            const submitBtn = eventForm.querySelector('button[type="submit"]');
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+            feather.replace();
+        }
+    });
+
+    // Vérifier s'il y a une demande en attente après la connexion
+    document.addEventListener('DOMContentLoaded', function() {
+        const pendingEvent = sessionStorage.getItem('pendingEventRequest');
+        if (pendingEvent) {
+            const data = JSON.parse(pendingEvent);
+            sessionStorage.removeItem('pendingEventRequest');
+            
+            // Si l'utilisateur est maintenant connecté, soumettre automatiquement
+            if (window.authManager && window.authManager.isAuthenticated()) {
+                window.api.createEvent(data)
+                    .then(response => {
+                        if (response.success) {
+                            notify.info('Votre demande d\'événement a été enregistrée avec succès !');
+                            
+                            // Rediriger vers le profil
+                            setTimeout(() => {
+                                window.location.href = '/profile?tab=events';
+                            }, 1500);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error submitting pending event:', error);
+                        notify.info('Erreur lors de l\'enregistrement de votre demande');
+                    });
+            }
+        }
+        
+        // Initialiser feather icons
+        feather.replace();
+    });
+    </script>
+    <script>feather.replace();</script>
+</body>
+</html>

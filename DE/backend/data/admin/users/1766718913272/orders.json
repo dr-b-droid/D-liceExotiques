@@ -1,0 +1,292 @@
+{
+  "orders": [
+    {
+      "id": "ORD-1766719425207",
+      "date": "2025-12-26T03:23:45.207Z",
+      "status": "cancelled",
+      "total": 30,
+      "items": [
+        {
+          "name": "Salade Exotique",
+          "quantity": 2,
+          "price": 15,
+          "image": "http://static.photos/food/1200x630/6"
+        }
+      ],
+      "deliveryAddress": null,
+      "estimatedDelivery": null,
+      "createdAt": "2025-12-26T03:23:45.207Z",
+      "updatedAt": "2026-01-01T02:51:43.980Z"
+    },
+    {
+      "id": "ORD-1766719517526",
+      "date": "2025-12-26T03:25:17.526Z",
+      "status": "completed",
+      "total": 204,
+      "items": [
+        {
+          "name": "Mafé Quantique",
+          "quantity": 3,
+          "price": 68,
+          "image": "http://static.photos/food/1200x630/3"
+        }
+      ],
+      "deliveryAddress": null,
+      "estimatedDelivery": null,
+      "createdAt": "2025-12-26T03:25:17.526Z",
+      "updatedAt": "2026-01-05T23:43:47.055Z"
+    },
+    {
+      "id": "ORD-1766795008212",
+      "date": "2025-12-27T00:23:28.212Z",
+      "status": "completed",
+      "total": 12,
+      "items": [
+        {
+          "name": "Samosas Revisités",
+          "quantity": 1,
+          "price": 12,
+          "image": "http://static.photos/food/1200x630/4"
+        }
+      ],
+      "deliveryAddress": null,
+      "estimatedDelivery": null,
+      "createdAt": "2025-12-27T00:23:28.212Z",
+      "updatedAt": "2026-01-01T02:52:21.393Z"
+    },
+    {
+      "id": "ORD-1766804311820",
+      "date": "2025-12-27T02:58:31.820Z",
+      "status": "completed",
+      "total": 1000,
+      "items": [
+        {
+          "name": "rizs",
+          "quantity": 2,
+          "price": 500,
+          "image": null
+        }
+      ],
+      "deliveryAddress": null,
+      "estimatedDelivery": null,
+      "createdAt": "2025-12-27T02:58:31.820Z",
+      "updatedAt": "2026-01-01T02:52:16.226Z"
+    },
+    {
+      "id": "ORD-1766805647008",
+      "date": "2025-12-27T03:20:47.008Z",
+      "status": "completed",
+      "total": 17850,
+      "items": [
+        {
+          "name": "poulet",
+          "quantity": 7,
+          "price": 2550,
+          "image": "/assets/imgs/1.png"
+        }
+      ],
+      "deliveryAddress": null,
+      "estimatedDelivery": null,
+      "createdAt": "2025-12-27T03:20:47.008Z",
+      "updatedAt": "2026-01-01T02:52:10.276Z"
+    },
+    {
+      "id": "ORD-1766834700621",
+      "date": "2025-12-27T11:25:00.621Z",
+      "status": "completed",
+      "total": 22,
+      "items": [
+        {
+          "name": "Pastels au Thon",
+          "quantity": 1,
+          "price": 10,
+          "image": "http://static.photos/food/1200x630/5"
+        },
+        {
+          "name": "Samosas Revisités",
+          "quantity": 1,
+          "price": 12,
+          "image": "http://static.photos/food/1200x630/4"
+        }
+      ],
+      "deliveryAddress": null,
+      "estimatedDelivery": null,
+      "createdAt": "2025-12-27T11:25:00.621Z",
+      "updatedAt": "2026-01-05T23:43:41.514Z"
+    },
+    {
+      "id": "ORD-1767118934968",
+      "date": "2025-12-30T18:22:14.968Z",
+      "status": "completed",
+      "total": 10000,
+      "items": [
+        {
+          "name": "Ndolè aux crevettes",
+          "quantity": 2,
+          "price": 2500,
+          "image": "/assets/imgs/ndole.png"
+        },
+        {
+          "name": "Okok",
+          "quantity": 2,
+          "price": 2500,
+          "image": "/assets/imgs/okok.png"
+        }
+      ],
+      "deliveryAddress": null,
+      "estimatedDelivery": null,
+      "createdAt": "2025-12-30T18:22:14.968Z",
+      "updatedAt": "2026-06-17T21:14:59.966Z"
+    },
+    {
+      "id": "ORD-1767123043985",
+      "date": "2025-12-30T19:30:43.985Z",
+      "status": "completed",
+      "total": 1700,
+      "items": [
+        {
+          "name": "Ekomba",
+          "quantity": 1,
+          "price": 1700,
+          "image": "/assets/imgs/ekomba.png"
+        }
+      ],
+      "deliveryAddress": null,
+      "estimatedDelivery": null,
+      "createdAt": "2025-12-30T19:30:43.985Z",
+      "updatedAt": "2026-01-05T23:43:07.232Z"
+    },
+    {
+      "id": "ORD-1767240968104",
+      "date": "2026-01-01T04:16:08.104Z",
+      "status": "cancelled",
+      "total": 10000,
+      "items": [
+        {
+          "name": "Sashimi",
+          "quantity": 2,
+          "price": 5000,
+          "image": "/assets/imgs/sashimi.png"
+        }
+      ],
+      "deliveryAddress": null,
+      "estimatedDelivery": null,
+      "createdAt": "2026-01-01T04:16:08.104Z",
+      "updatedAt": "2026-01-01T04:16:34.946Z"
+    },
+    {
+      "id": "ORD-1767244326591",
+      "date": "2026-01-01T05:12:06.591Z",
+      "status": "cancelled",
+      "total": 10000,
+      "items": [
+        {
+          "name": "Poulet DG",
+          "quantity": 2,
+          "price": 5000,
+          "image": "/assets/imgs/PDG.png"
+        }
+      ],
+      "deliveryAddress": null,
+      "estimatedDelivery": null,
+      "createdAt": "2026-01-01T05:12:06.591Z",
+      "updatedAt": "2026-01-05T23:43:56.039Z"
+    },
+    {
+      "id": "ORD-1767318120475",
+      "date": "2026-01-02T01:42:00.475Z",
+      "status": "cancelled",
+      "total": 2500,
+      "items": [
+        {
+          "name": "Ndolè aux crevettes",
+          "quantity": 1,
+          "price": 2500,
+          "image": "/assets/imgs/ndole.png"
+        }
+      ],
+      "deliveryAddress": null,
+      "estimatedDelivery": null,
+      "createdAt": "2026-01-02T01:42:00.475Z",
+      "updatedAt": "2026-01-10T19:26:56.114Z"
+    },
+    {
+      "id": "ORD-1767321721747",
+      "date": "2026-01-02T02:42:01.747Z",
+      "status": "cancelled",
+      "total": 5000,
+      "items": [
+        {
+          "name": "Sashimi",
+          "quantity": 1,
+          "price": 5000,
+          "image": "/assets/imgs/sashimi.png"
+        }
+      ],
+      "deliveryAddress": null,
+      "estimatedDelivery": null,
+      "createdAt": "2026-01-02T02:42:01.747Z",
+      "updatedAt": "2026-01-02T02:42:28.613Z"
+    },
+    {
+      "id": "ORD-1768071997720",
+      "date": "2026-01-10T19:06:37.720Z",
+      "status": "completed",
+      "total": 2500,
+      "items": [
+        {
+          "name": "Okok",
+          "quantity": 1,
+          "price": 2500,
+          "image": "/assets/imgs/okok.png"
+        }
+      ],
+      "deliveryAddress": null,
+      "estimatedDelivery": null,
+      "createdAt": "2026-01-10T19:06:37.720Z",
+      "updatedAt": "2026-01-10T19:07:31.133Z"
+    },
+    {
+      "id": "ORD-1768136520338",
+      "date": "2026-01-11T13:02:00.338Z",
+      "status": "cancelled",
+      "total": 4550,
+      "items": [
+        {
+          "name": "Tajine de poulet aux olives",
+          "quantity": 1,
+          "price": 4550,
+          "image": "/assets/imgs/TPO.png"
+        }
+      ],
+      "deliveryAddress": null,
+      "estimatedDelivery": null,
+      "createdAt": "2026-01-11T13:02:00.338Z",
+      "updatedAt": "2026-01-11T13:02:31.265Z"
+    },
+    {
+      "id": "ORD-1781730849005",
+      "date": "2026-06-17T21:14:09.005Z",
+      "status": "completed",
+      "total": 5000,
+      "items": [
+        {
+          "name": "Ndolè aux crevettes",
+          "quantity": 1,
+          "price": 2500,
+          "image": "/assets/imgs/ndole.png"
+        },
+        {
+          "name": "Mbongo poisson",
+          "quantity": 1,
+          "price": 2500,
+          "image": "/assets/imgs/mbongo.png"
+        }
+      ],
+      "deliveryAddress": null,
+      "estimatedDelivery": null,
+      "createdAt": "2026-06-17T21:14:09.005Z",
+      "updatedAt": "2026-06-17T21:15:44.490Z"
+    }
+  ]
+}

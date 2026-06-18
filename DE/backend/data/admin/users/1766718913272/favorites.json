@@ -1,0 +1,36 @@
+{
+  "favorites": [
+    {
+      "id": "1767238523988",
+      "name": "Mbongo poisson",
+      "category": "plats",
+      "price": 2500,
+      "image": "/assets/imgs/mbongo.png",
+      "addedAt": "2026-01-01T03:35:23.988Z"
+    },
+    {
+      "id": "1767239398443",
+      "name": "Ndolè aux crevettes",
+      "category": "plats",
+      "price": 2500,
+      "image": "/assets/imgs/ndole.png",
+      "addedAt": "2026-01-01T03:49:58.443Z"
+    },
+    {
+      "id": "1767322193029",
+      "name": "Sashimi",
+      "category": "entrees",
+      "price": 5000,
+      "image": "/assets/imgs/sashimi.png",
+      "addedAt": "2026-01-02T02:49:53.029Z"
+    },
+    {
+      "id": "1768507354335",
+      "name": "Jus de bissap",
+      "category": "boissons",
+      "price": 800,
+      "image": "/assets/imgs/bissap.png",
+      "addedAt": "2026-01-15T20:02:34.335Z"
+    }
+  ]
+}

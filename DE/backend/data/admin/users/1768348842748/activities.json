@@ -1,0 +1,22 @@
+{
+  "activities": [
+    {
+      "id": "1768349638006",
+      "type": "order_update",
+      "icon": "shopping-bag",
+      "description": "Commande #ORD-1768 livrée",
+      "timestamp": "2026-01-14T00:13:58.006Z"
+    },
+    {
+      "id": "1768349615067",
+      "type": "order_placed",
+      "title": "Nouvelle commande",
+      "description": "Commande ORD-1768349615059 - 10000.00  fcfa",
+      "date": "2026-01-14T00:13:35.064Z",
+      "icon": "shopping-bag",
+      "color": "gold",
+      "relatedId": "ORD-1768349615059",
+      "timestamp": "2026-01-14T00:13:35.064Z"
+    }
+  ]
+}

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À Propos  </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/assets/imgs/logo.png" type="image/x-icon">
+    <script src="/components/tailwindcss.js"></script>
+    <script src="/components/navigation.js"></script>
+    <script src="/components/footer.js"></script>
+    <script src="/components/feather.min.js"></script>
+    <script src="/components/utils.js"></script>
+    <script src="/js/api.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: '#D4AF37',
+                        deepblack: '#0A0A0A',
+                        emerald: '#50C878',
+                        africanred: '#E32636',
+                        richbrown: '#5C4033',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body{
+            margin-top: 100px;
+        }
+        .review-card {
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .review-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(212, 175, 55, 0.2);
+        }
+        
+        .review-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, transparent 100%);
+            border-radius: 1rem;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .review-card:hover::before {
+            opacity: 1;
+        }
+        
+        .stats-bar {
+            height: 8px;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .stats-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #D4AF37 0%, #FFD700 100%);
+            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+        
+        .like-button {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .like-button:hover:not(:disabled) {
+            transform: scale(1.1);
+        }
+        
+        .like-button.liked svg {
+            fill: #E32636;
+            stroke: #E32636;
+        }
+        
+        .like-button.liked {
+            animation: heartBeat 0.6s ease;
+        }
+    
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.3); }
+            50% { transform: scale(1.1); }
+            75% { transform: scale(1.2); }
+        }
+        
+    </style>
+</head>
+<body class="bg-deepblack text-white font-sans overflow-x-hidden">
+    <custom-navigation></custom-navigation>
+
+    <!-- Hero Section -->
+    <section class="relative h-[100vh] overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-deepblack z-10"></div>
+        <div class="absolute inset-0">
+            <img src="/assets/imgs/logo.png" alt="Equipe" class="w-full h-full object-cover opacity-40">
+        </div>
+        
+        <div class="relative z-20 h-full flex flex-col justify-center items-center text-center px-4">
+            <h1 class="text-5xl md:text-7xl font-serif mb-6 text-gold animate-fade-in" style="font-family: 'Playfair Display', serif;">
+                Notre Equipe
+            </h1>
+            <p class="text-xl md:text-2xl max-w-2xl text-white/90 animate-fade-in-delay">
+                Les créateurs de Délices Exotiques
+            </p>
+        </div>
+    </section>
+
+    <!-- Project Info Section -->
+    <section class="py-16 px-4 md:px-8 lg:px-16 bg-richbrown/10">
+        <div class="max-w-6xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-serif mb-6 text-gold" style="font-family: 'Playfair Display', serif;">À Propos du Projet</h2>
+            <p class="text-lg text-white/80 max-w-3xl mx-auto leading-relaxed mb-8">
+                Délices Exotiques est un projet académique développé dans le cadre de notre formation en développement web. 
+                Ce site web complet simule un restaurant gastronomique moderne avec système de réservation, gestion des commandes, 
+                organisation d'événements et interface d'administration.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+                <div class="bg-deepblack/50 border border-gold/20 rounded-xl p-6">
+                    <i data-feather="code" class="mx-auto mb-3 text-gold" width="40" height="40"></i>
+                    <h3 class="text-xl font-semibold mb-2 text-gold">Full-Stack</h3>
+                    <p class="text-white/70">Frontend & Backend intégrés</p>
+                </div>
+                <div class="bg-deepblack/50 border border-gold/20 rounded-xl p-6">
+                    <i data-feather="users" class="mx-auto mb-3 text-gold" width="40" height="40"></i>
+                    <h3 class="text-xl font-semibold mb-2 text-gold">Travail d'Equipe</h3>
+                    <p class="text-white/70">Collaboration de 5 développeurs</p>
+                </div>
+                <div class="bg-deepblack/50 border border-gold/20 rounded-xl p-6">
+                    <i data-feather="award" class="mx-auto mb-3 text-gold" width="40" height="40"></i>
+                    <h3 class="text-xl font-semibold mb-2 text-gold">Projet Scolaire</h3>
+                    <p class="text-white/70">2025/2026 -  Programmation Web</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-20 px-4 md:px-8 lg:px-16">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-serif text-center mb-4 text-gold" style="font-family: 'Playfair Display', serif;">L'Equipe de Développement</h2>
+            <p class="text-center text-white/70 mb-16 max-w-2xl mx-auto">
+                Une équipe passionnée et compétente qui a donné vie à ce projet
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Chef de Groupe -->
+                <div class="team-card bg-gradient-to-br from-gold/10 via-richbrown/20 to-deepblack/90 border-2 border-gold rounded-2xl p-8 text-center relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-gold role-badge text-deepblack text-xs font-bold px-3 py-1 rounded-bl-lg">
+                        CHEF DE GROUPE
+                    </div>
+                    <div class="w-32 h-32 mx-auto mb-6 bg-gradient-to-br from-gold to-gold/50 rounded-full flex items-center justify-center text-4xl font-bold text-deepblack">
+                        E
+                    </div>
+                    <h3 class="text-2xl font-serif text-gold mb-2">EMBK</h3>
+                    <p class="text-white/70 mb-4 text-sm">Chef de Projet & Coordinateur</p>
+                    <p class="text-white/60 text-sm leading-relaxed">
+                        Responsable de la coordination générale du projet, de l'architecture globale et de la gestion de l'équipe. 
+                        Supervision technique et validation des fonctionnalités.
+                    </p>
+                    <div class="mt-6 pt-4 border-t border-gold/20">
+                        <div class="flex justify-center gap-2 text-gold/50">
+                            <i data-feather="star" width="16"></i>
+                            <i data-feather="users" width="16"></i>
+                            <i data-feather="trending-up" width="16"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gestionnaire Réservations & Livraison -->
+                <div class="team-card bg-gradient-to-br from-emerald/10 via-richbrown/20 to-deepblack/90 border border-emerald/30 rounded-2xl p-8 text-center relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-emerald/80 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
+                        RESERVATIONS
+                    </div>
+                    <div class="w-32 h-32 mx-auto mb-6 bg-gradient-to-br from-emerald to-emerald/50 rounded-full flex items-center justify-center text-4xl font-bold text-white">
+                        K
+                    </div>
+                    <h3 class="text-2xl font-serif text-emerald mb-2">KEPSEU</h3>
+                    <p class="text-white/70 mb-4 text-sm">Gestionnaire Réservations & Livraison</p>
+                    <p class="text-white/60 text-sm leading-relaxed">
+                        Développement du système de réservation de tables, gestion du workflow de livraison et intégration 
+                        avec le profil utilisateur.
+                    </p>
+                    <div class="mt-6 pt-4 border-t border-emerald/20">
+                        <div class="flex justify-center gap-2 text-emerald/50">
+                            <i data-feather="calendar" width="16"></i>
+                            <i data-feather="truck" width="16"></i>
+                            <i data-feather="check-circle" width="16"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gestionnaire Menu -->
+                <div class="team-card bg-gradient-to-br from-africanred/10 via-richbrown/20 to-deepblack/90 border border-africanred/30 rounded-2xl p-8 text-center relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-africanred/80 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
+                        MENU
+                    </div>
+                    <div class="w-32 h-32 mx-auto mb-6 bg-gradient-to-br from-africanred to-africanred/50 rounded-full flex items-center justify-center text-4xl font-bold text-white">
+                        M
+                    </div>
+                    <h3 class="text-2xl font-serif text-africanred mb-2">MVOGO</h3>
+                    <p class="text-white/70 mb-4 text-sm">Gestionnaire du Menu</p>
+                    <p class="text-white/60 text-sm leading-relaxed">
+                        Création et gestion de la base de données des menus, développement de l'interface d'affichage des plats 
+                        et système de catégorisation.
+                    </p>
+                    <div class="mt-6 pt-4 border-t border-africanred/20">
+                        <div class="flex justify-center gap-2 text-africanred/50">
+                            <i data-feather="book-open" width="16"></i>
+                            <i data-feather="list" width="16"></i>
+                            <i data-feather="edit-3" width="16"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gestionnaire Evénements -->
+                <!-- <div class="team-card bg-gradient-to-br from-purple-500/10 via-richbrown/20 to-deepblack/90 border border-purple-500/30 rounded-2xl p-8 text-center relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-purple-500/80 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
+                        EVENEMENTS
+                    </div>
+                    <div class="w-32 h-32 mx-auto mb-6 bg-gradient-to-br from-purple-500 to-purple-500/50 rounded-full flex items-center justify-center text-4xl font-bold text-white">
+                        S
+                    </div>
+                    <h3 class="text-2xl font-serif text-purple-400 mb-2">SIMO</h3>
+                    <p class="text-white/70 mb-4 text-sm">Gestionnaire des Evénements</p>
+                    <p class="text-white/60 text-sm leading-relaxed">
+                        Développement du module d'organisation d'événements, formulaires de demande et système de validation 
+                        par l'administration.
+                    </p>
+                    <div class="mt-6 pt-4 border-t border-purple-500/20">
+                        <div class="flex justify-center gap-2 text-purple-400/50">
+                            <i data-feather="star" width="16"></i>
+                            <i data-feather="gift" width="16"></i>
+                            <i data-feather="award" width="16"></i>
+                        </div>
+                    </div>
+                </div> -->
+
+                <!-- Designer -->
+                <div class="team-card bg-gradient-to-br from-blue-500/10 via-richbrown/20 to-deepblack/90 border border-blue-500/30 rounded-2xl p-8 text-center relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-blue-500/80 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
+                        DESIGN UI/UX
+                    </div>
+                    <div class="w-32 h-32 mx-auto mb-6 bg-gradient-to-br from-blue-500 to-blue-500/50 rounded-full flex items-center justify-center text-4xl font-bold text-white">
+                        W
+                    </div>
+                    <h3 class="text-2xl font-serif text-blue-400 mb-2">WOLASSE</h3>
+                    <p class="text-white/70 mb-4 text-sm">Designer UI/UX</p>
+                    <p class="text-white/60 text-sm leading-relaxed">
+                        Conception de l'identité visuelle, design des interfaces utilisateur, expérience utilisateur et 
+                        cohérence graphique du site.
+                    </p>
+                    <div class="mt-6 pt-4 border-t border-blue-500/20">
+                        <div class="flex justify-center gap-2 text-blue-400/50">
+                            <i data-feather="layout" width="16"></i>
+                            <i data-feather="eye" width="16"></i>
+                            <i data-feather="palette" width="16"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contribution Badge -->
+                <div class="bg-gradient-to-br from-gold/5 via-richbrown/10 to-deepblack/90 border border-gold/10 rounded-2xl p-8 flex flex-col justify-center items-center text-center">
+                    <i data-feather="heart" class="text-gold mb-4" width="48" height="48"></i>
+                    <h3 class="text-xl font-serif text-gold mb-4">Collaboration & Passion</h3>
+                    <p class="text-white/60 text-sm leading-relaxed">
+                        Ce projet est le fruit d'une collaboration étroite entre tous les membres de l'équipe, 
+                        combinant expertise technique et créativité pour créer une expérience utilisateur exceptionnelle.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="py-20 px-4 md:px-8 lg:px-16 bg-richbrown/10">
+        <div class="max-w-6xl mx-auto">
+            <!-- Stats -->
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-serif mb-6 text-gold" style="font-family: 'Playfair Display', serif;">
+                    Avis de la Communauté
+                </h2>
+                <p class="text-white/70 mb-8">Découvrez ce que nos utilisateurs pensent de notre travail</p>
+                
+                <div id="statsSection" class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12">
+                    <!-- Stats chargées dynamiquement -->
+                </div>
+            </div>
+
+            <!-- Add Review Form -->
+            <div id="reviewFormSection" class="max-w-3xl mx-auto mb-16">
+                <!-- Formulaire chargé dynamiquement -->
+            </div>
+
+            <!-- Reviews List -->
+            <div id="reviewsList" class="space-y-6">
+                <!-- Avis chargés dynamiquement -->
+            </div>
+
+            <!-- Pagination -->
+            <div id="paginationSection" class="mt-12 flex justify-center gap-2">
+                <!-- Pagination chargée dynamiquement -->
+            </div>
+        </div>
+    </section>
+
+    <custom-footer></custom-footer>
+    <script src="/js/aboutUs-script.js"></script>
+</body>
+</html>

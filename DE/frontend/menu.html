@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu  </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/assets/imgs/logo.png" type="image/x-icon">
+    <script src="/components/tailwindcss.js"></script>
+    <script src="/components/navigation.js"></script>
+    <script src="/components/footer.js"></script>
+    <script src="/components/feather.min.js"></script>
+    <script src="/js/api.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: '#D4AF37',
+                        deepblack: '#0A0A0A',
+                        emerald: '#50C878',
+                        africanred: '#E32636',
+                        richbrown: '#5C4033',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            padding-top: 100px;
+        }
+        
+        .fade-in-result {
+            animation: fadeInResult 0.3s ease;
+        }
+
+        @keyframes fadeInResult {
+            from {
+                opacity: 0;
+                transform: translateY(-5px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .count-badge {
+            background: rgba(212, 175, 55, 0.2);
+            color: #D4AF37;
+            padding: 0.125rem 0.5rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="bg-deepblack text-white font-sans overflow-x-hidden">
+    <!-- Main Navigation -->
+    <custom-navigation></custom-navigation>
+
+    <!-- Hero Section Menu -->
+    <section class="hero-section relative h-[50vh] overflow-hidden">
+        <div class="absolute inset-0 bg-black/70 z-10"></div>
+        <div class="absolute inset-0">
+            <img src="/assets/imgs/menu.png" alt="Menu" class="w-full h-full object-cover">
+        </div>
+        
+        <div class="relative z-20 h-full flex flex-col justify-center items-center text-center px-4">
+            <h1 class="text-5xl md:text-7xl font-serif mb-6 text-gold animate-fade-in">
+                Notre Menu
+            </h1>
+            <p class="text-xl md:text-2xl max-w-2xl text-white/90 animate-fade-in-delay">
+                Découvrez notre carte raffinée de saveurs exotiques
+            </p>
+        </div>
+    </section>
+
+    <!-- Barre de Controle Unifiée (Catégories + Recherche + Panier) -->
+    <section class="control-bar py-4 px-4 md:px-8 lg:px-16 sticky bg-deepblack/95 backdrop-blur-sm border-b border-gold/20">
+        <div class="max-w-7xl mx-auto flex items-center gap-3">
+            
+            <!-- Dropdown Catégories -->
+            <div class="category-dropdown">
+                <button id="categoryDropdownBtn" class="flex items-center gap-2 px-4 py-2.5 bg-gold/10 hover:bg-gold/20 text-gold border border-gold/30 rounded-lg transition-all whitespace-nowrap">
+                    <i data-feather="filter" width="18" height="18"></i>
+                    <span id="currentCategory">Toutes les catégories</span>
+                    <i data-feather="chevron-down" width="18" height="18" id="categoryChevron"></i>
+                </button>
+                
+                <div class="category-menu">
+                    <div class="category-menu-item active" data-category="all">
+                        <i data-feather="grid" width="18" height="18" class="text-gold"></i>
+                        <span>Toutes les catégories</span>
+                       
+                    </div>
+                    <div class="category-menu-item" data-category="entrees">
+                        <i data-feather="coffee" width="18" height="18" class="text-gold"></i>
+                        <span>Entrées</span>
+                        
+                    </div>
+                    <div class="category-menu-item" data-category="plats">
+                        <i data-feather="award" width="18" height="18" class="text-gold"></i>
+                        <span>Plats Principaux</span>
+                        
+                    </div>
+                    <div class="category-menu-item" data-category="desserts">
+                        <i data-feather="heart" width="18" height="18" class="text-gold"></i>
+                        <span>Desserts</span>
+                        
+                    </div>
+                    <div class="category-menu-item" data-category="boissons">
+                        <i data-feather="droplet" width="18" height="18" class="text-gold"></i>
+                        <span>Boissons</span>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <!-- Barre de Recherche Compacte -->
+            <div class="flex-1 relative">
+                <div class="relative">
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        placeholder="Rechercher un plat..." 
+                        class="w-full bg-richbrown/20 border border-gold/30 rounded-lg px-4 py-2.5 pl-10 pr-10 text-white placeholder-white/50 focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/20 transition-all text-sm"
+                        autocomplete="off"
+                    >
+                    <i data-feather="search" class="absolute left-3 top-1/2 -translate-y-1/2 text-gold/60" width="18" height="18"></i>
+                    <button 
+                        id="clearSearch" 
+                        class="absolute right-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-white transition-colors hidden"
+                        onclick="clearSearch()"
+                    >
+                        <i data-feather="x" width="16" height="16"></i>
+                    </button>
+                </div>
+                
+                <!-- Résultats de recherche -->
+                <div id="searchResults" class="search-results-compact hidden"></div>
+            </div>
+
+            <!-- Bouton Panier -->
+            <button onclick="toggleCart()" class="flex items-center gap-2 px-4 py-2.5 bg-gold/10 hover:bg-gold/20 text-gold border border-gold/30 rounded-lg transition-all relative whitespace-nowrap">
+                <i data-feather="shopping-cart" width="18" height="18"></i>
+                <span class="hidden sm:inline">Panier</span>
+                <span id="cart-count" class="absolute -top-2 -right-2 bg-africanred text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-medium">0</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Menu Items -->
+    <section class="py-12 px-4 md:px-8 lg:px-16">
+        <div class="max-w-7xl mx-auto">
+            <!-- Message de chargement -->
+            <div id="loading-message" class="text-center py-12">
+                <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-gold mb-4"></div>
+                <p class="text-white/60">Chargement du menu...</p>
+            </div>
+
+            <!-- Message d'erreur -->
+            <div id="error-message" class="hidden text-center py-12">
+                <div class="bg-africanred/10 border border-africanred/30 rounded-2xl p-8 max-w-md mx-auto">
+                    <i data-feather="alert-circle" class="text-africanred mx-auto mb-4" width="48" height="48"></i>
+                    <p class="text-white/80 mb-4">Impossible de charger le menu</p>
+                    <button onclick="loadMenus()" class="px-6 py-3 bg-gold hover:bg-gold/90 text-deepblack font-medium rounded-xl transition-all">
+                        Réessayer
+                    </button>
+                </div>
+            </div>
+
+            <!-- Conteneur dynamique pour les catégories -->
+            <div id="menu-container"></div>
+
+            <!-- Message si aucun plat -->
+            <div id="empty-message" class="hidden text-center py-12">
+                <div class="bg-richbrown/20 border border-gold/20 rounded-2xl p-8 max-w-md mx-auto">
+                    <i data-feather="coffee" class="text-gold/30 mx-auto mb-4" width="64" height="64"></i>
+                    <p class="text-white/60 mb-2">Aucun plat disponible pour le moment</p>
+                    <p class="text-white/40 text-sm">Revenez bientot pour découvrir nos délices !</p>
+                </div>
+            </div>
+
+            <!-- Message aucun résultat de recherche -->
+            <div id="no-search-results" class="hidden text-center py-12">
+                <div class="bg-richbrown/20 border border-gold/20 rounded-2xl p-8 max-w-md mx-auto">
+                    <i data-feather="search" class="text-gold/30 mx-auto mb-4" width="64" height="64"></i>
+                    <p class="text-white/60 mb-2">Aucun résultat pour "<span id="search-query-text"></span>"</p>
+                    <p class="text-white/40 text-sm">Essayez avec d'autres mots-clés</p>
+                    <button onclick="clearSearch()" class="mt-4 px-6 py-2 bg-gold/20 hover:bg-gold/30 text-gold border border-gold/30 rounded-xl transition-all">
+                        Effacer la recherche
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Sidebar -->
+    <div id="cart-sidebar" class="fixed top-0 right-0 h-full w-full md:w-96 bg-deepblack border-l border-gold/20 z-[1100] transform translate-x-full transition-transform duration-300 overflow-y-auto">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-2xl font-serif text-gold">Votre Panier</h2>
+                <button onclick="toggleCart()" class="text-white/60 hover:text-white">
+                    <i data-feather="x" width="24" height="24"></i>
+                </button>
+            </div>
+
+            <div id="cart-items" class="space-y-4 mb-8"></div>
+
+            <div class="border-t border-gold/20 pt-6">
+                <div class="flex justify-between items-center mb-6">
+                    <span class="text-xl text-white/90">Total</span>
+                    <span id="cart-total" class="text-2xl font-serif text-gold">0 FCFA</span>
+                </div>
+                <button onclick="checkout()" class="w-full bg-gold hover:bg-gold/90 text-deepblack font-medium py-4 px-6 rounded-lg transition-all transform hover:scale-[1.02] flex items-center justify-center gap-2">
+                    <i data-feather="credit-card" width="20" height="20"></i>
+                    Procéder au paiement
+                </button>
+                <button onclick="clearCart()" class="w-full mt-3 bg-africanred/10 hover:bg-africanred/20 text-africanred border border-africanred/30 font-medium py-3 px-6 rounded-lg transition-all">
+                    Vider le panier
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div id="cart-overlay" class="fixed inset-0 bg-black/60 z-[1050] hidden" onclick="toggleCart()"></div>
+
+    <!-- Footer Component -->
+    <custom-footer></custom-footer>
+
+    <script src="/js/menu-script.js"></script>
+    <script src="/components/utils.js"></script>
+</body>
+</html>

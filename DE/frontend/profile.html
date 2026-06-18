@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Profil  </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/assets/imgs/logo.png" type="image/x-icon">
+    <script src="/components/tailwindcss.js"></script>
+    <script src="/components/navigation.js"></script>
+    <script src="/components/footer.js"></script>
+    <script src="/components/feather.min.js"></script>
+    <script src="/js/api.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: '#D4AF37',
+                        deepblack: '#0A0A0A',
+                        emerald: '#50C878',
+                        africanred: '#E32636',
+                        richbrown: '#5C4033',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .pattern-bg {
+            background-image: 
+                linear-gradient(30deg, rgba(212, 175, 55, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(212, 175, 55, 0.03) 87.5%, rgba(212, 175, 55, 0.03)),
+                linear-gradient(150deg, rgba(212, 175, 55, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(212, 175, 55, 0.03) 87.5%, rgba(212, 175, 55, 0.03));
+            background-size: 80px 140px;
+        }
+    </style>
+</head>
+<body class="bg-deepblack text-white overflow-x-hidden">
+    <custom-navigation></custom-navigation>
+
+    <!-- Profile Header -->
+    <section class="relative pt-32 pb-12 pattern-bg">
+        <div class="absolute inset-0 bg-gradient-to-b from-black/40 to-deepblack"></div>
+        <div class="relative container mx-auto px-4 max-w-6xl">
+            <div class="flex flex-col md:flex-row items-center md:items-start gap-6 animate-fade-in">
+                <div class="relative">
+                    <div id="userAvatar" class="w-32 h-32 rounded-full bg-gradient-to-br from-gold to-gold/50 flex items-center justify-center text-4xl font-serif text-deepblack shadow-xl">
+                        <div class="loading-skeleton w-full h-full rounded-full"></div>
+                    </div>
+                </div>
+
+                <div class="flex-1 text-center md:text-left">
+                    <div class="flex flex-col md:flex-row md:items-center gap-3 mb-3">
+                        <h1 id="userName" class="text-3xl md:text-4xl font-serif text-gold">
+                            <div class="loading-skeleton h-10 w-64"></div>
+                        </h1>
+                        <span class="inline-flex items-center gap-2 px-4 py-1 bg-gold/10 border border-gold/30 rounded-full text-gold text-sm">
+                            <i data-feather="award" width="16" height="16"></i>
+                            Membre
+                        </span>
+                    </div>
+                    <p id="userContact" class="text-white/70 mb-4">
+                        <span class="loading-skeleton inline-block h-5 w-80"></span>
+                    </p>
+                </div>
+
+                <div class="flex gap-3">
+                    <button onclick="showEditProfile()" class="px-6 py-3 bg-gold hover:bg-gold/90 text-deepblack font-medium rounded-xl transition-all flex items-center gap-2">
+                        <i data-feather="edit-2" width="18" height="18"></i>
+                        Modifier
+                    </button>
+                    <button onclick="handleLogout()" class="px-6 py-3 bg-richbrown/40 hover:bg-richbrown/60 border border-gold/30 text-white font-medium rounded-xl transition-all flex items-center gap-2">
+                        <i data-feather="log-out" width="18" height="18"></i>
+                        Déconnexion
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tabs Navigation -->
+    <section class="container mx-auto px-4 max-w-6xl -mt-4 mb-12">
+        <div class="bg-gradient-to-br from-richbrown/40 to-richbrown/20 border border-gold/30 rounded-2xl overflow-hidden">
+            <div class="flex overflow-x-auto">
+                <button onclick="switchTab('overview')" class="tab-btn active flex-1 px-6 py-4 font-medium transition-all">
+                    <i data-feather="grid" width="18" height="18" class="inline mr-2"></i>
+                    Vue d'ensemble
+                </button>
+                <button onclick="switchTab('reservations')" class="tab-btn flex-1 px-6 py-4 font-medium transition-all">
+                    <i data-feather="calendar" width="18" height="18" class="inline mr-2"></i>
+                    Réservations
+                </button>
+                <button onclick="switchTab('orders')" class="tab-btn flex-1 px-6 py-4 font-medium transition-all">
+                    <i data-feather="shopping-bag" width="18" height="18" class="inline mr-2"></i>
+                    Commandes
+                </button>
+                <button onclick="switchTab('events')" class="tab-btn flex-1 px-6 py-4 font-medium transition-all">
+                    <i data-feather="star" width="18" height="18" class="inline mr-2"></i>
+                    Evénements
+                </button>
+                <button onclick="switchTab('settings')" class="tab-btn flex-1 px-6 py-4 font-medium transition-all">
+                    <i data-feather="settings" width="18" height="18" class="inline mr-2"></i>
+                    Paramètres
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tab Contents -->
+    <section class="container mx-auto px-4 max-w-6xl pb-20">
+        <!-- Overview Tab -->
+        <div id="overview" class="tab-content active">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="bg-gradient-to-br from-richbrown/40 to-richbrown/20 border border-gold/30 rounded-2xl p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="p-3 bg-gold/20 rounded-xl">
+                            <i data-feather="calendar" class="text-gold" width="24" height="24"></i>
+                        </div>
+                        <span id="reservationsCount" class="text-3xl font-bold text-gold">0</span>
+                    </div>
+                    <h3 class="text-white/80 font-medium">Réservations</h3>
+                </div>
+
+                <div class="bg-gradient-to-br from-richbrown/40 to-richbrown/20 border border-gold/30 rounded-2xl p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="p-3 bg-emerald/20 rounded-xl">
+                            <i data-feather="shopping-bag" class="text-emerald" width="24" height="24"></i>
+                        </div>
+                        <span id="ordersCount" class="text-3xl font-bold text-emerald">0</span>
+                    </div>
+                    <h3 class="text-white/80 font-medium">Commandes</h3>
+                </div>
+
+                <div class="bg-gradient-to-br from-richbrown/40 to-richbrown/20 border border-gold/30 rounded-2xl p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="p-3 bg-africanred/20 rounded-xl">
+                            <i data-feather="star" class="text-africanred" width="24" height="24"></i>
+                        </div>
+                        <span id="eventsCount" class="text-3xl font-bold text-africanred">0</span>
+                    </div>
+                    <h3 class="text-white/80 font-medium">Evénements</h3>
+                </div>
+            </div>
+
+            <div class="bg-gradient-to-br from-richbrown/40 to-richbrown/20 border border-gold/30 rounded-2xl p-8">
+                <h2 class="text-2xl font-serif text-gold mb-6">Activité récente</h2>
+                <div id="recentActivity" class="space-y-4">
+                    <div class="text-center py-8 text-white/60">Chargement...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reservations Tab -->
+        <div id="reservations" class="tab-content">
+            <div class="bg-gradient-to-br from-richbrown/40 to-richbrown/20 border border-gold/30 rounded-2xl p-8">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-2xl font-serif text-gold">Mes Réservations</h2>
+                    <a href="/reservation" class="px-4 py-2 bg-gold hover:bg-gold/90 text-deepblack font-medium rounded-lg transition-all">
+                        Nouvelle réservation
+                    </a>
+                </div>
+                <div id="reservationsList">
+                    <div class="text-center py-8 text-white/60">Chargement...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Orders Tab -->
+        <div id="orders" class="tab-content">
+            <div class="bg-gradient-to-br from-richbrown/40 to-richbrown/20 border border-gold/30 rounded-2xl p-8">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-2xl font-serif text-gold">Mes Commandes</h2>
+                    <a href="/menu" class="px-4 py-2 bg-gold hover:bg-gold/90 text-deepblack font-medium rounded-lg transition-all">
+                        Commander
+                    </a>
+                </div>
+                <div id="ordersList">
+                    <div class="text-center py-8 text-white/60">Chargement...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Events Tab -->
+        <div id="events" class="tab-content">
+            <div class="bg-gradient-to-br from-richbrown/40 to-richbrown/20 border border-gold/30 rounded-2xl p-8">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-2xl font-serif text-gold">Mes Evénements</h2>
+                    <a href="/events" class="px-4 py-2 bg-gold hover:bg-gold/90 text-deepblack font-medium rounded-lg transition-all">
+                        Demander un événement
+                    </a>
+                </div>
+                <div id="eventsList">
+                    <div class="text-center py-8 text-white/60">Chargement...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Tab -->
+        <div id="settings" class="tab-content">
+            <div class="grid gap-6">
+                <div class="bg-gradient-to-br from-richbrown/40 to-richbrown/20 border border-gold/30 rounded-2xl p-8">
+                    <h2 class="text-2xl font-serif text-gold mb-6">Informations personnelles</h2>
+                    <form id="profileForm" class="space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-white/80 mb-2 font-medium">Nom complet</label>
+                                <input type="text" id="settingsName" required
+                                       class="w-full bg-deepblack/50 border border-gold/20 rounded-xl px-4 py-3 text-white focus:border-gold focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-white/80 mb-2 font-medium">Téléphone</label>
+                                <input type="tel" id="settingsPhone"
+                                       class="w-full bg-deepblack/50 border border-gold/20 rounded-xl px-4 py-3 text-white focus:border-gold focus:outline-none">
+                            </div>
+                        </div>
+                        <button type="submit" class="px-6 py-3 bg-gold hover:bg-gold/90 text-deepblack font-medium rounded-xl transition-all">
+                            Enregistrer les modifications
+                        </button>
+                    </form>
+                </div>
+                <div class="bg-gradient-to-br from-africanred/10 to-africanred/5 border border-africanred/30 rounded-2xl p-8">
+                    <h2 class="text-2xl font-serif text-africanred mb-4 flex items-center gap-3">
+                        <i data-feather="alert-triangle" width="24" height="24"></i>
+                    </h2>
+                    <p class="text-white/70 mb-6">
+                        L'actions suivante est irréversible. Veuillez procéder avec prudence.
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between p-4 bg-deepblack/30 rounded-xl">
+                            <div>
+                                <h3 class="text-white font-medium mb-1">Supprimer mon compte</h3>
+                                <p class="text-white/60 text-sm">Supprime définitivement votre compte et toutes vos données</p>
+                            </div>
+                            <button onclick="window.location.href='/deleteAccount'" class="px-4 py-2 bg-africanred/20 hover:bg-africanred/30 border border-africanred/50 text-africanred font-medium rounded-lg transition-all flex items-center gap-2">
+                                <i data-feather="trash-2" width="18" height="18"></i>
+                                Supprimer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <custom-footer></custom-footer>
+    <script src="/js/profile-script.js"></script>
+    <script src="/components/utils.js"></script>
+</body>
+</html>

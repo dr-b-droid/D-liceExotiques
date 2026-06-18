@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact  </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/assets/imgs/logo.png" type="image/x-icon">
+    <script src="/components/tailwindcss.js"></script>
+    <script src="/components/navigation.js"></script>
+    <script src="/components/footer.js"></script>
+    <script src="/components/feather.min.js"></script>
+    <script src="/js/api.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: '#D4AF37',
+                        deepblack: '#0A0A0A',
+                        emerald: '#50C878',
+                        africanred: '#E32636',
+                        richbrown: '#5C4033',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+         body {
+            padding-top: 80px;
+        }
+    </style>
+</head>
+<body class="bg-deepblack text-white font-sans overflow-x-hidden">
+    <!-- Main Navigation -->
+    <custom-navigation></custom-navigation>
+
+    <!-- Hero Section -->
+    <section class="relative h-[85vh] overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-deepblack z-10"></div>
+        <div class="absolute inset-0">
+            <img src="/assets/imgs/contact.png" alt="Contact" class="w-full h-full object-cover">
+        </div>
+        
+        <div class="relative z-20 h-full flex flex-col justify-center items-center text-center px-4">
+            <h1 class="text-5xl md:text-7xl font-serif mb-6 text-gold animate-fade-in">
+                Contactez-Nous
+            </h1>
+            <p class="text-xl md:text-2xl max-w-2xl text-white/90">
+                Nous sommes à votre écoute pour toute question ou réservation
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Info Cards -->
+    <section class="py-20 px-4 md:px-8 lg:px-16 pattern-bg">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <!-- Phone -->
+                <div class="bg-gradient-to-br from-richbrown/30 to-richbrown/10 border border-gold/20 rounded-2xl p-8 text-center scale-in hover:border-gold/50 transition-all">
+                    <div class="bg-gold/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-feather="phone" class="text-gold" width="32" height="32"></i>
+                    </div>
+                    <h3 class="text-2xl font-serif text-gold mb-3">Téléphone</h3>
+                    <p class="text-white/70 mb-2">Réservations & Renseignements</p>
+                    <a href="tel:+33142868282" class="text-white hover:text-gold transition-colors text-lg font-medium">
+                        +237 629 61 68 01
+                    </a>
+                    <p class="text-white/60 text-sm mt-3">Lun - Dim : 10h - 23h</p>
+                </div>
+
+                <!-- Email -->
+                <div class="bg-gradient-to-br from-richbrown/30 to-richbrown/10 border border-gold/20 rounded-2xl p-8 text-center scale-in hover:border-gold/50 transition-all">
+                    <div class="bg-gold/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-feather="mail" class="text-gold" width="32" height="32"></i>
+                    </div>
+                    <h3 class="text-2xl font-serif text-gold mb-3">Email</h3>
+                    <p class="text-white/70 mb-2">Questions & Partenariats</p>
+                    <a href="contact@delices-exotiques.fr" class="text-white hover:text-gold transition-colors text-lg font-medium break-all">
+                        delices-exotiques@gmail.com
+                    </a>
+                    <p class="text-white/60 text-sm mt-3">Réponse sous 24h</p>
+                </div>
+
+                <!-- Address -->
+                <div class="bg-gradient-to-br from-richbrown/30 to-richbrown/10 border border-gold/20 rounded-2xl p-8 text-center scale-in hover:border-gold/50 transition-all">
+                    <div class="bg-gold/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-feather="map-pin" class="text-gold" width="32" height="32"></i>
+                    </div>
+                    <h3 class="text-2xl font-serif text-gold mb-3">Adresse</h3>
+                    <p class="text-white/70 mb-2">Visitez-nous</p>
+                    <p class="text-white text-lg font-medium">
+                        123 Avenue Bastos<br>
+                    </p>
+                    <a onclick="notify.warning('option google maps à venir')" target="_blank" class="inline-block mt-3 text-gold hover:text-gold/80 text-sm font-medium">
+                        Voir sur la carte
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form & Map -->
+    <section class="py-20 px-4 md:px-8 lg:px-16 bg-richbrown/10" id="contact">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div class="fade-in-section">
+                    <div class="bg-gradient-to-br from-richbrown/40 to-richbrown/20 border border-gold/30 rounded-2xl p-8 md:p-10 backdrop-blur-sm">
+                        <h2 class="text-3xl md:text-4xl font-serif text-gold mb-2">Envoyez-nous un message</h2>
+                        <p class="text-white/70 mb-8">Remplissez le formulaire et nous vous répondrons rapidement</p>
+                        
+                        <form id="contactForm" class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="firstName" class="block text-white/80 mb-2 font-medium">
+                                        <i data-feather="user" class="inline w-4 h-4 mr-2 text-gold"></i>
+                                        Prénom *
+                                    </label>
+                                    <input type="text" id="firstName" required class="w-full bg-deepblack/50 border border-gold/20 rounded-xl px-4 py-3 text-white focus:border-gold focus:outline-none transition-all" placeholder="">
+                                </div>
+                                <div>
+                                    <label for="lastName" class="block text-white/80 mb-2 font-medium">
+                                        <i data-feather="user" class="inline w-4 h-4 mr-2 text-gold"></i>
+                                        Nom *
+                                    </label>
+                                    <input type="text" id="lastName" required class="w-full bg-deepblack/50 border border-gold/20 rounded-xl px-4 py-3 text-white focus:border-gold focus:outline-none transition-all" placeholder="">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="email" class="block text-white/80 mb-2 font-medium">
+                                    <i data-feather="mail" class="inline w-4 h-4 mr-2 text-gold"></i>
+                                    Email *
+                                </label>
+                                <input type="email" id="email" required class="w-full bg-deepblack/50 border border-gold/20 rounded-xl px-4 py-3 text-white focus:border-gold focus:outline-none transition-all" placeholder="votre@email.com">
+                            </div>
+
+                            <div>
+                                <label for="phone" class="block text-white/80 mb-2 font-medium">
+                                    <i data-feather="phone" class="inline w-4 h-4 mr-2 text-gold"></i>
+                                    Téléphone
+                                </label>
+                                <input type="tel" id="phone" class="w-full bg-deepblack/50 border border-gold/20 rounded-xl px-4 py-3 text-white focus:border-gold focus:outline-none transition-all" placeholder="+237 ... .. .. ..">
+                            </div>
+
+                            <div>
+                                <label for="subject" class="block text-white/80 mb-2 font-medium">
+                                    <i data-feather="tag" class="inline w-4 h-4 mr-2 text-gold"></i>
+                                    Sujet *
+                                </label>
+                                <select id="subject" required class="w-full bg-deepblack/50 border border-gold/20 rounded-xl px-4 py-3 text-white focus:border-gold focus:outline-none transition-all">
+                                    <option value="">Sélectionnez un sujet</option>
+                                    <option value="reservation">Réservation</option>
+                                    <option value="event">Organisation d'événement</option>
+                                    <option value="catering">Service traiteur</option>
+                                    <option value="partnership">Partenariat</option>
+                                    <option value="feedback">Avis / Suggestion</option>
+                                    <option value="other">Autre</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="message" class="block text-white/80 mb-2 font-medium">
+                                    <i data-feather="message-circle" class="inline w-4 h-4 mr-2 text-gold"></i>
+                                    Message *
+                                </label>
+                                <textarea id="message" required rows="5" class="w-full bg-deepblack/50 border border-gold/20 rounded-xl px-4 py-3 text-white focus:border-gold focus:outline-none transition-all resize-none" placeholder="Votre message..."></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full bg-gold hover:bg-gold/90 text-deepblack font-medium py-4 px-6 rounded-xl transition-all transform hover:scale-[1.02] shadow-lg flex items-center justify-center gap-2 text-lg">
+                                <i data-feather="send" width="20" height="20"></i>
+                                Envoyer le message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Map & Opening Hours -->
+                <div class="space-y-8 fade-in-section">
+                    <!-- Map -->
+                    <div class="map-container">
+                        <iframe
+                            src="//"
+                            loading="lazy"
+                            allowfullscreen
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                    <!-- Opening Hours -->
+                    <div class="bg-gradient-to-br from-richbrown/40 to-richbrown/20 border border-gold/30 rounded-2xl p-8 backdrop-blur-sm">
+                        <h3 class="text-2xl font-serif text-gold mb-6 flex items-center gap-2">
+                            <i data-feather="clock" width="28" height="28"></i>
+                            Horaires d'ouverture
+                        </h3>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center pb-3 border-b border-gold/10">
+                                <span class="text-white font-medium">Lundi - Vendredi</span>
+                                <span class="text-gold">12h - 14h30 - 19h - 23h</span>
+                            </div>
+                            <div class="flex justify-between items-center pb-3 border-b border-gold/10">
+                                <span class="text-white font-medium">Samedi</span>
+                                <span class="text-gold">19h - 23h30</span>
+                            </div>
+                            <div class="flex justify-between items-center pb-3 border-b border-gold/10">
+                                <span class="text-white font-medium">Dimanche</span>
+                                <span class="text-gold">12h - 15h - 19h - 22h</span>
+                            </div>
+                            <div class="mt-6 bg-emerald/10 border border-emerald/30 rounded-lg p-4">
+                                <p class="text-emerald text-sm flex items-center gap-2">
+                                    <i data-feather="check-circle" width="16" height="16"></i>
+                                    <span>Ouvert tous les jours, jours fériés inclus</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Links -->
+                    <div class="bg-gradient-to-br from-richbrown/40 to-richbrown/20 border border-gold/30 rounded-2xl p-8 backdrop-blur-sm">
+                        <h3 class="text-2xl font-serif text-gold mb-6">Accès rapide</h3>
+                        <div class="space-y-3">
+                            <a href="/reservation" class="flex items-center gap-3 text-white/80 hover:text-gold transition-colors group">
+                                <i data-feather="calendar" class="text-gold group-hover:scale-110 transition-transform" width="20" height="20"></i>
+                                <span>Réserver une table</span>
+                            </a>
+                            <a href="/events" class="flex items-center gap-3 text-white/80 hover:text-gold transition-colors group">
+                                <i data-feather="star" class="text-gold group-hover:scale-110 transition-transform" width="20" height="20"></i>
+                                <span>Organiser un événement</span>
+                            </a>
+                            <a href="/menu" class="flex items-center gap-3 text-white/80 hover:text-gold transition-colors group">
+                                <svg width="20" class="text-gold group-hover:scale-110 transition-transform" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                    <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"></path>
+                                    <path d="M7 2v20"></path>
+                                    <path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"></path>
+                                </svg>
+                                <span>Consulter la carte</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 px-4 md:px-8 lg:px-16 pattern-bg">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12 fade-in-section">
+                <h2 class="text-4xl md:text-5xl font-serif mb-4 text-gold">Questions Fréquentes</h2>
+                <p class="text-white/70 text-lg">Trouvez rapidement les réponses à vos questions</p>
+            </div>
+
+            <div class="space-y-4">
+                <details class="bg-richbrown/20 border border-gold/20 rounded-xl p-6 scale-in group hover:border-gold/50 transition-all">
+                    <summary class="text-lg font-medium text-gold cursor-pointer flex items-center justify-between">
+                        <span>Comment effectuer une réservation ?</span>
+                        <i data-feather="chevron-down" class="text-gold transition-transform group-open:rotate-180" width="20" height="20"></i>
+                    </summary>
+                    <p class="mt-4 text-white/80 leading-relaxed">
+                        Vous pouvez réserver directement sur notre site via le formulaire de réservation, nous appeler au +237 629 61 68 01, ou nous envoyer un email. Nous confirmons toutes les réservations dans les 24 heures.
+                    </p>
+                </details>
+
+                <details class="bg-richbrown/20 border border-gold/20 rounded-xl p-6 scale-in group hover:border-gold/50 transition-all">
+                    <summary class="text-lg font-medium text-gold cursor-pointer flex items-center justify-between">
+                        <span>Proposez-vous des options végétariennes ?</span>
+                        <i data-feather="chevron-down" class="text-gold transition-transform group-open:rotate-180" width="20" height="20"></i>
+                    </summary>
+                    <p class="mt-4 text-white/80 leading-relaxed">
+                        Oui, nous proposons plusieurs options végétariennes et véganes dans notre carte. Notre chef peut également adapter certains plats selon vos préférences alimentaires sur demande.
+                    </p>
+                </details>
+
+                <details class="bg-richbrown/20 border border-gold/20 rounded-xl p-6 scale-in group hover:border-gold/50 transition-all">
+                    <summary class="text-lg font-medium text-gold cursor-pointer flex items-center justify-between">
+                        <span>Organisez-vous des événements privés ?</span>
+                        <i data-feather="chevron-down" class="text-gold transition-transform group-open:rotate-180" width="20" height="20"></i>
+                    </summary>
+                    <p class="mt-4 text-white/80 leading-relaxed">
+                        Absolument ! Nous disposons d'un salon privé pouvant accueillir jusqu'à 150 personnes. Nous organisons des mariages, anniversaires, événements d'entreprise et plus encore. Contactez-nous pour plus d'informations.
+                    </p>
+                </details>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Component -->
+    <script src="components/footer.js"></script>
+    <custom-footer></custom-footer>
+
+    
+    <script>
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            };
+            
+            console.log('Contact form submitted:', formData);
+            
+            notify.success('Merci pour votre message ! Nous vous répondrons dans les plus brefs délais. (fake!)');
+            this.reset();
+           
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.fade-in-section, .scale-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        feather.replace();
+    </script>
+    <script src="/components/utils.js"></script>
+</body>
+</html>

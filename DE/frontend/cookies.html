@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Politique de Cookies  </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/assets/imgs/logo.png" type="image/x-icon">
+    <script src="/components/tailwindcss.js"></script>
+    <script src="/components/navigation.js"></script>
+    <script src="/components/footer.js"></script>
+    <script src="/components/feather.min.js"></script>
+    <script src="/js/api.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: '#D4AF37',
+                        deepblack: '#0A0A0A',
+                        emerald: '#50C878',
+                        africanred: '#E32636',
+                        richbrown: '#5C4033',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        input:checked + .slider {
+            background-color: #D4AF37;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        input:disabled + .slider {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body class="bg-deepblack text-white font-sans overflow-x-hidden">
+    <custom-navigation></custom-navigation>
+
+    <!-- Hero Section -->
+    <section class="relative h-[40vh] overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-black/90 via-black/70 to-deepblack z-10"></div>
+        <div class="relative z-20 h-full flex flex-col justify-center items-center text-center px-4">
+            <div class="mb-4">
+                <i data-feather="cookie" class="text-gold mx-auto" width="64" height="64"></i>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-serif mb-4 text-gold">
+                Politique de Cookies
+            </h1>
+            <p class="text-lg md:text-xl max-w-2xl text-white/90">
+                Comment nous utilisons les cookies sur notre site
+            </p>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="py-16 px-4 md:px-8 lg:px-16">
+        <div class="max-w-4xl mx-auto">
+            
+            <div class="last-updated">
+                <i data-feather="calendar" class="inline w-5 h-5 mr-2"></i>
+                <strong>Dernière mise à jour :</strong> 30 décembre 2025
+            </div>
+
+            <!-- Introduction -->
+            <div class="legal-section">
+                <h2>1. Qu'est-ce qu'un Cookie ?</h2>
+                <p>
+                    Un cookie est un petit fichier texte stocké sur votre appareil (ordinateur, smartphone, tablette) 
+                    lorsque vous visitez un site web. Les cookies permettent au site de mémoriser vos actions et 
+                    préférences (comme votre connexion, langue, taille de police, etc.) pendant une certaine période.
+                </p>
+                <p>
+                    Cette politique explique comment <strong>Délices Exotiques</strong> utilise les cookies et 
+                    technologies similaires sur son site web.
+                </p>
+            </div>
+
+            <!-- Types de cookies -->
+            <div class="legal-section">
+                <h2>2. Types de Cookies Utilisés</h2>
+                
+                <h3>2.1. Cookies Strictement Nécessaires</h3>
+                <p>
+                    Ce cookie est essentiel au fonctionnement du site. Ils vous permet de naviguer sur le site 
+                    et d'utiliser ses fonctionnalités. Sans ce cookie, certains services ne peuvent pas être fournis.
+                </p>
+                
+                <table class="cookie-table">
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Finalité</th>
+                            <th>Durée</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>connect.sid</code></td>
+                            <td>Session utilisateur - maintient votre connexion</td>
+                            <td>24 heures</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="highlight-box">
+                    <p><i data-feather="info" class="inline w-5 h-5 mr-2 text-gold"></i>
+                    <strong>Note :</strong> Ce cookie ne peut pas être désactivés car il est essentiel 
+                    au fonctionnement du site.</p>
+                </div>
+            </div>
+
+            <!-- LocalStorage et SessionStorage -->
+            <div class="legal-section">
+                <h2>3. LocalStorage et SessionStorage</h2>
+                <p>
+                    En plus des cookies, nous utilisons également le stockage local de votre navigateur 
+                    (LocalStorage et SessionStorage) pour améliorer votre expérience :
+                </p>
+
+                <h3>3.1. LocalStorage</h3>
+                <p>Données persistantes stockées localement :</p>
+                <ul>
+                    <li><strong>Panier d'achat :</strong> Contenu de votre panier même après fermeture du navigateur</li>
+                    <li><strong>Favoris :</strong> Liste de vos plats favoris</li>
+                    <li><strong>Préférences :</strong> Paramètres d'affichage et préférences utilisateur</li>
+                    <li><strong>Avis :</strong> Evaluations que vous avez soumises sur le site</li>
+                </ul>
+
+                <h3>3.2. SessionStorage</h3>
+                <p>Données temporaires effacées à la fermeture du navigateur :</p>
+                <ul>
+                    <li><strong>Données de formulaire :</strong> Sauvegarde temporaire lors de la navigation</li>
+                    <li><strong>Etat de navigation :</strong> Onglets actifs, scroll position, etc.</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <p><i data-feather="info" class="inline w-5 h-5 mr-2 text-gold"></i>
+                    <strong>Note :</strong> Contrairement aux cookies, les données de LocalStorage et SessionStorage 
+                    ne sont jamais transmises au serveur. Elles restent uniquement sur votre appareil.</p>
+                </div>
+            </div>
+
+            <!-- Finalités -->
+            <div class="legal-section">
+                <h2>4. Finalités d'Utilisation des Cookies</h2>
+                <p>Nous utilisons les cookies pour :</p>
+
+                <h3>4.1. Fonctionnement du Site</h3>
+                <ul>
+                    <li>Maintenir votre session de connexion</li>
+                    <li>Mémoriser vos préférences</li>
+                    <li>Prévenir la fraude</li>
+                </ul>
+
+                <h3>4.2. Amélioration de l'Expérience Utilisateur</h3>
+                <ul>
+                    <li>Personnaliser le contenu affiché</li>
+                    <li>Mémoriser votre panier d'achat</li>
+                    <li>Se souvenir de vos choix</li>
+                    <li>Eviter de vous redemander des informations déjà fournies</li>
+                </ul>
+            </div>
+
+            <!-- Gestion des cookies -->
+            <div class="legal-section">
+                <h2>5. Gestion de vos Préférences</h2>
+                
+                <h3>5.1. Panneau de Préférences</h3>
+                <p>Vous pouvez gérer vos préférences en matière de cookies à tout moment :</p>
+                
+                <div class="bg-richbrown/20 border border-gold/20 rounded-xl p-6 my-6">
+                    <h4 class="text-lg font-semibold text-gold mb-4">Vos Préférences de Cookies</h4>
+                    
+                    <div class="space-y-4">
+                        <!-- Cookies nécessaires -->
+                        <div class="flex items-center justify-between p-4 bg-deepblack/50 rounded-lg">
+                            <div class="flex-1">
+                                <p class="font-semibold text-white">Cookies Strictement Nécessaires</p>
+                                <p class="text-sm text-white/60 mt-1">Requis pour le fonctionnement du site</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked disabled>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+
+                        Cookies de fonctionnalité
+                        <div class="flex items-center justify-between p-4 bg-deepblack/50 rounded-lg">
+                            <div class="flex-1">
+                                <p class="font-semibold text-white">Cookies de Fonctionnalité</p>
+                                <p class="text-sm text-white/60 mt-1">Personnalisent votre expérience</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="functionality-cookies" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 flex gap-4">
+                        <button id="save-preferences" class="px-6 py-3 bg-gold hover:bg-gold/90 text-deepblack font-medium rounded-lg transition-all">
+                            Enregistrer mes préférences
+                        </button>
+                        <button id="accept-all" class="px-6 py-3 bg-emerald hover:bg-emerald/90 text-white font-medium rounded-lg transition-all">
+                            Tout accepter
+                        </button>
+                        <button id="reject-optional" class="px-6 py-3 bg-deepblack/50 hover:bg-deepblack/70 border border-gold/30 text-white font-medium rounded-lg transition-all">
+                            Refuser les cookies optionnels
+                        </button>
+                    </div>
+                </div>
+
+                <h3>5.2. Paramètres du Navigateur</h3>
+                <p>Vous pouvez également gérer les cookies via les paramètres de votre navigateur :</p>
+
+                <h4 class="text-gold mt-4">Dans le Navigateur</h4>
+                <ol class="ml-6">
+                    <li>Cliquez sur le menu Chrome (trois points verticaux)</li>
+                    <li>Sélectionnez "Paramètres"</li>
+                    <li>Cliquez sur "Confidentialité et sécurité"</li>
+                    <li>Cliquez sur "Cookies et autres données de sites"</li>
+                    <li>Gérez vos préférences</li>
+                </ol>
+            </div>
+
+            <!-- Conséquences du refus -->
+            <div class="legal-section">
+                <h2>6. Conséquences du Refus des Cookies</h2>
+                <p>
+                    Si vous refusez certains cookies, certaines fonctionnalités du site peuvent être limitées :
+                </p>
+
+                <h3>6.1. Cookies Nécessaires (non désactivables)</h3>
+                <ul>
+                    <li>Impossibilité de se connecter à votre compte</li>
+                    <li>Perte de votre panier lors de la navigation</li>
+                    <li>Impossible de passer une commande</li>
+                </ul>
+
+                <h3>6.2. Cookies de Fonctionnalité</h3>
+                <ul>
+                    <li>Perte de vos préférences à chaque visite</li>
+                    <li>Panier non sauvegardé entre les sessions</li>
+                    <li>Favoris non mémorisés</li>
+                </ul>
+            </div>
+
+            <!-- Durée de conservation -->
+            <div class="legal-section">
+                <h2>7. Durée de Conservation des Cookies</h2>
+                <p>La durée de conservation des cookies varie selon leur type :</p>
+                <ul>
+                    <li><strong>Cookies de session :</strong> Supprimés à la fermeture du navigateur</li>
+                    <li><strong>Cookies persistants :</strong> Conservés selon la durée spécifiée (voir tableaux ci-dessus)</li>
+                </ul>
+                <p>
+                    Dans tous les cas, les cookies sont automatiquement supprimés à l'expiration de leur durée de vie. 
+                    Vous pouvez également les supprimer manuellement à tout moment via les paramètres de votre navigateur.
+                </p>
+            </div>
+
+            <!-- Sécurité -->
+            <div class="legal-section">
+                <h2>9. Sécurité des Cookies</h2>
+                <p>Nous prenons la sécurité de vos données très au sérieux :</p>
+                <ul>
+                    <li><strong>Cryptage :</strong> Les cookies contenant des données sensibles sont cryptés</li>
+                    <li><strong>HttpOnly :</strong> Les cookies de session sont marqués HttpOnly pour prévenir les attaques</li>
+                    <li><strong>Expiration :</strong> Les cookies expirent automatiquement après leur durée de vie</li>
+                </ul>
+            </div>
+
+            <!-- Mises à jour -->
+            <div class="legal-section">
+                <h2>10. Modifications de cette Politique</h2>
+                <p>
+                    Nous pouvons modifier cette politique de cookies de temps en temps pour refléter les changements 
+                    dans notre utilisation des cookies ou pour des raisons légales, réglementaires ou opérationnelles.
+                </p>
+                <p>
+                    La date de la dernière mise à jour est indiquée en haut de cette page. Nous vous encourageons 
+                    à consulter régulièrement cette politique.
+                </p>
+            </div>
+
+            <!-- Contact -->
+            <div class="legal-section">
+                <h2>12. Nous Contacter</h2>
+                <p>Si vous avez des questions concernant notre utilisation des cookies, vous pouvez nous contacter :</p>
+                <div class="highlight-box">
+                    <p><strong>Email :</strong> <a href="#" class="text-gold hover:underline">delices-exotiques@gmail.com</a></p>
+                    <p><strong>Téléphone :</strong> +237 629 61 68 01</p>
+                    <p><strong>Courrier :</strong> 123 Avenue Bastos</p>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <div class="mt-12 p-6 bg-richbrown/20 border border-gold/20 rounded-xl">
+                <h3 class="text-xl font-serif text-gold mb-4">Documents Connexes</h3>
+                <div class="flex flex-wrap gap-4">
+                    <a href="/privacy" class="px-6 py-3 bg-gold/10 hover:bg-gold/20 border border-gold/30 rounded-lg transition-all">
+                        <i data-feather="shield" class="inline w-4 h-4 mr-2"></i>
+                        Politique de Confidentialité
+                    </a>
+                    <a href="/terms" class="px-6 py-3 bg-gold/10 hover:bg-gold/20 border border-gold/30 rounded-lg transition-all">
+                        <i data-feather="file-text" class="inline w-4 h-4 mr-2"></i>
+                        Conditions Générales
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <custom-footer></custom-footer>
+
+    <script>
+        feather.replace();
+
+        // Cookie preferences management
+        const functionalityCookies = document.getElementById('functionality-cookies');
+        const saveBtn = document.getElementById('save-preferences');
+        const acceptAllBtn = document.getElementById('accept-all');
+        const rejectOptionalBtn = document.getElementById('reject-optional');
+
+        // Load saved preferences
+        function loadPreferences() {
+            const prefs = JSON.parse(localStorage.getItem('cookiePreferences') || '{"performance": true, "functionality": true}');
+            functionalityCookies.checked = prefs.functionality;
+        }
+
+        // Save preferences
+        function savePreferences() {
+            const prefs = {
+                functionality: functionalityCookies.checked,
+                timestamp: new Date().toISOString()
+            };
+            localStorage.setItem('cookiePreferences', JSON.stringify(prefs));
+            showNotification('Vos préférences ont été enregistrées', 'success');
+        }
+
+        // Accept all
+        function acceptAll() {
+            functionalityCookies.checked = true;
+            savePreferences();
+        }
+
+        // Reject optional
+        function rejectOptional() {
+            functionalityCookies.checked = false;
+            savePreferences();
+        }
+
+        // Show notification
+        function showNotification(message, type) {
+            const notification = document.createElement('div');
+            notification.className = `fixed top-4 right-4 px-6 py-4 rounded-lg shadow-lg z-50 ${type === 'success' ? 'bg-emerald text-white' : 'bg-africanred text-white'}`;
+            notification.innerHTML = `
+                <div class="flex items-center gap-2">
+                    <i data-feather="check-circle" width="20" height="20"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+            document.body.appendChild(notification);
+            feather.replace();
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        // Event listeners
+        saveBtn.addEventListener('click', savePreferences);
+        acceptAllBtn.addEventListener('click', acceptAll);
+        rejectOptionalBtn.addEventListener('click', rejectOptional);
+
+        // Load preferences on page load
+        loadPreferences();
+    </script>
+    <script src="/components/utils.js"></script>
+</body>
+</html>

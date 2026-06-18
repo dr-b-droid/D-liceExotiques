@@ -1,0 +1,123 @@
+{
+  "events": [
+    {
+      "id": "EVT-1766795175223",
+      "eventType": "Mariage",
+      "name": "Brandon Kennedy Emodjeu Miafo",
+      "email": "bemodjeu@gmail.com",
+      "phone": "+237670662337",
+      "company": "CodingLearnia",
+      "date": "2025-12-24",
+      "time": "15:25",
+      "guests": "100+",
+      "budget": "120+",
+      "services": [
+        "Menu personnalisé"
+      ],
+      "description": "rien",
+      "status": "confirmed",
+      "createdAt": "2025-12-27T00:26:15.223Z",
+      "adminResponse": "Votre demande d'événement a été confirmée !",
+      "updatedAt": "2026-01-01T02:51:13.363Z"
+    },
+    {
+      "id": "EVT-1766834437386",
+      "eventType": "Anniversaire",
+      "name": "Brandon Kennedy Emodjeu Miafo",
+      "email": "bemodjeu@gmail.com",
+      "phone": "+237670662337",
+      "company": "CodingLearnia",
+      "date": "2025-12-27",
+      "time": "14:18",
+      "guests": "100+",
+      "budget": "120+",
+      "services": [
+        "Menu personnalisé",
+        "Décoration",
+        "DJ/Musique",
+        "Photographe",
+        "Salon VIP",
+        "Service traiteur"
+      ],
+      "description": "Une soirée inoubliable avec ambiance",
+      "status": "confirmed",
+      "createdAt": "2025-12-27T11:20:37.386Z",
+      "adminResponse": "j'aime la survie",
+      "updatedAt": "2026-01-01T02:51:06.995Z"
+    },
+    {
+      "id": "EVT-1767119058452",
+      "eventType": "Séminaire",
+      "name": "Brandon Kennedy Emodjeu Miafo",
+      "email": "bemodjeu@gmail.com",
+      "phone": "+237670662337",
+      "company": "Rapture",
+      "date": "2025-12-28",
+      "time": "19:28",
+      "guests": "10-30",
+      "budget": "80-120",
+      "services": [
+        "Service traiteur"
+      ],
+      "description": "rien de spécial, juste atteindre la perfection",
+      "status": "confirmed",
+      "createdAt": "2025-12-30T18:24:18.452Z",
+      "adminResponse": "Votre demande d'événement a été confirmée !",
+      "updatedAt": "2026-01-01T02:51:31.244Z"
+    },
+    {
+      "id": "EVT-1767239512773",
+      "eventType": "Gala",
+      "email": "bemodjeu@gmail.com",
+      "phone": "+237670662337",
+      "company": "sd",
+      "date": "2026-01-21",
+      "time": "19:51",
+      "guests": "50-100",
+      "budget": "50-80",
+      "services": [
+        "Menu personnalisé",
+        "Décoration"
+      ],
+      "description": "rien",
+      "status": "cancelled",
+      "createdAt": "2026-01-01T03:51:52.773Z",
+      "adminResponse": "je n'aime pas les gala",
+      "updatedAt": "2026-01-01T03:53:06.038Z"
+    },
+    {
+      "id": "EVT-1767318236069",
+      "eventType": "Cocktail",
+      "email": "bemodjeu@gmail.com",
+      "phone": "+237670662337",
+      "company": "",
+      "date": "2026-01-26",
+      "time": "18:43",
+      "guests": "10-30",
+      "budget": "80-120",
+      "services": [],
+      "description": "nothing",
+      "status": "confirmed",
+      "createdAt": "2026-01-02T01:43:56.069Z",
+      "adminResponse": "Votre demande d'événement a été confirmée !",
+      "updatedAt": "2026-01-02T02:37:47.867Z"
+    },
+    {
+      "id": "EVT-1767321808674",
+      "eventType": "Baptême",
+      "email": "bemodjeu@gmail.com",
+      "phone": "+237670662337",
+      "company": "",
+      "date": "2026-01-26",
+      "time": "20:43",
+      "guests": "100+",
+      "budget": "120+",
+      "services": [],
+      "description": "rien",
+      "status": "cancelled",
+      "createdAt": "2026-01-02T02:43:28.674Z",
+      "adminResponse": "pas assez précis!",
+      "updatedAt": "2026-01-10T19:27:19.716Z"
+    }
+  ]
+}

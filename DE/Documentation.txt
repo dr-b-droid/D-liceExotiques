@@ -1,0 +1,248 @@
+================================================================================
+                            DELICES EXOTIQUES
+              Système de Gestion de Restaurant - Documentation Technique
+================================================================================
+
+================================================================================
+DEMARRAGE RAPIDE
+================================================================================
+AVEC START.BAT (RECOMMANDE)
+---------------------------
+Double-cliquer sur le fichier "start.bat" -> Le navigateur s'ouvre automatiquement à l'addrèsse http://localhost:3000
+Cela peut prendre quelque minute. Soyez pateient.
+---------------------------
+
+
+Groupe 6
+Projet Informatique  2025/2026
+Version 1.0
+
+"Un voyage culinaire à travers l'Afrique et le monde"
+
+================================================================================
+PRESENTATION
+================================================================================
+
+Délices Exotiques est une application web full-stack moderne simulant la
+gestion complète d'un restaurant gastronomique spécialisé dans la cuisine
+africaine et internationale. Ce projet académique combine élégance visuelle,
+fonctionnalités avancées et architecture robuste pour offrir une expérience
+utilisateur exceptionnelle.
+
+POINTS CLES :
+- Interface utilisateur élégante et intuitive
+- Système d'authentification sécurisé
+- Dashboard administrateur complet
+- Gestion en temps réel des commandes
+- Systeme de notation dynamique et public du site
+- Catalogue de 57+ menus extensible
+
+================================================================================
+L'EQUIPE - GROUPE 6
+================================================================================
+
+Ce projet a été réalisé par une équipe de 5 élèves :
+
+KEPSEU - Gestionnaire Réservations & Livraison
+-----------------------------------------------
+- Développement du système de réservations
+- Gestion du flux de commandes et livraison
+
+MVOGO - Gestionnaire du Menu
+-----------------------------
+- catalogue complet des menus (57+ plats)
+- Système de catégorisation
+
+WOLASSE - Designer UI/UX
+-------------------------
+- Identité visuelle du restaurant
+- Design des interfaces (HTML/CSS/Tailwind)
+- Expérience utilisateur (UX)
+
+E.M.B.K. - Chef de Groupe
+--------------------------
+- Coordination générale du projet
+- Architecture backend (Node.js/Express)
+- Architecture base de données (JSON)
+- Système d'authentification sécurisé
+- Gestion de l'équipe et planning
+- Intégration des modules
+- Web Components réutilisables
+- Responsive design mobile-first
+- Validation des fonctionnalités
+
+
+================================================================================
+TECHNOLOGIES
+================================================================================
+
+Couche          Technologies
+--------        ------------
+Frontend        HTML5, CSS3, JavaScript ES6+, Tailwind CSS 3.x
+Backend         Node.js 22.x, Express.js 4.x
+Sécurité        bcryptjs 2.x, express-session 1.x
+Stockage        File System (JSON), LocalStorage, SessionStorage
+UI/UX           Feather Icons 4.x, Web Components
+
+================================================================================
+STRUCTURE DU PROJET
+================================================================================
+
+Organisation modulaire du code :
+
+FRONTEND/
+---------
+frontend/
+|-- index.html              # Page d'accueil
+|-- history.html            # Histoire du restaurant
+|-- AboutUs.html            # Equipe & notation
+|-- menu.html               # Catalogue (57+ plats)
+|-- reservation.html        # Réservation tables
+|-- events.html             # Evénements privés
+|-- auth.html               # Connexion/Inscription
+|-- profile.html            # Profil utilisateur
+|-- contact.html            # Contact restaurant
+|-- verifyAdmin.html        # Vérification admin (sécurisé)
+|-- admin.html              # Dashboard admin (sécurisé)
+|-- terms.html              # Conditions d'utilisation
+|-- privacy.html            # Politique de confidentialité
+|-- cookies.html            # Gestion des cookies
+│
+|-- css/
+│   |-- style.css           # Styles globaux
+│
+|-- js/
+│   |-- api.js              # Gestionnaire API
+|   |-- etc...js 
+│
+|-- components/
+    |-- feather.min.js      # Icones
+    |-- footer.js           # Footer réutilisable
+    |-- navigation.js       # Nav-bar
+    |-- utils.js            # Notifications & utils
+    |-- tailwindcss.js      # Tailwind CDN
+
+BACKEND/
+--------
+backend/
+|-- server.js               # Point d'entrée Express
+│
+|-- routes/
+│   |-- adminRoute/
+│   │   |-- adminRoutes.js  # Routes admin
+│   │   |-- adminService.js # Service admin
+│   │
+│   |-- authRoute/
+│   │   |-- authMiddleware  # Middleware auth
+│   │   |-- authRoutes.js   # Routes auth
+│   │   |-- userService.js  # Service user
+│   │
+│   |-- menuRoute/
+│   |   |-- menuRoutes.js   # Routes menu
+│   |   |-- menuService.js  # Service menu
+|   |
+|   |-- reviewRoute/
+│       |-- ReviewRoutes.js   # Routes des avis
+│       |-- ReviewService.js  # Service avis
+│
+|-- data/
+    |-- menus.json          # Catalogue 57+ plats
+    |-- admin/
+        |-- users.json      # Index utilisateurs
+        |-- reviews.json          # base de données des avis utilisateurs
+        |-- users/
+            |-- [userId]/
+                |-- infos.json
+                |-- orders.json
+                |-- reservations.json
+                |-- events.json
+                |-- favorites.json
+                |-- activities.json
+
+================================================================================
+DEMARRAGE RAPIDE
+================================================================================
+
+AVEC START.BAT (RECOMMANDE)
+---------------------------
+Double-cliquer sur start.bat -> Le navigateur s'ouvre automatiquement à l'addrèsse http://localhost:3000
+Cela peut prendre quelque minute. Soyez pateient.
+
+================================================================================
+ACCÈS ADMINISTRATEUR
+================================================================================
+
+Le système administrateur est sécurisé et nécessite une authentification en
+deux étapes.
+
+ROUTE D'ACCÈS
+-------------
+http://localhost:3000/admin
+
+PREREQUIS
+---------
+1. Etre connecté en tant qu'utilisateur
+   -> Si non connecté : redirection automatique vers /auth.html
+
+2. Entrer le code administrateur
+   Code par défaut : ADMIN2025
+   -> Accès via /verifyAdmin.html puis redirection automatique
+
+SESSION ADMINISTRATEUR
+----------------------
+- Durée : 7 heures
+- Sécurité : Vérification IP + Token cryptographique
+- Expiration : Redirection automatique + notification
+
+FONCTIONNALITES ADMIN
+----------------------
+- Dashboard avec statistiques temps réel
+- Gestion complète des commandes
+- Validation des réservations
+- Traitement des événements
+- Gestion complète des menus
+- Gestion complète des utilisateurs
+
+================================================================================
+DOCUMENTATION COMPLÈTE
+================================================================================
+
+Ce document présente une vue d'ensemble du projet. Pour des informations
+détaillées sur l'architecture, l'API, les fonctionnalités et le guide
+d'utilisation complet, veuillez consulter :
+
+README.md
+
+Le README contient :
+- Architecture détaillée du système
+- Documentation complète de l'API
+- Guide d'utilisation étape par étape
+- Schémas de base de données
+
+================================================================================
+INFORMATIONS ACADEMIQUES
+================================================================================
+
+Type de Projet   : Projet Informatique
+Groupe           : Groupe 6
+Année            : 2025/2026
+Durée            : 4 semaines
+Membres          : KEPSEU, MVOGO, SIMO(n'a pas travaillé), WOLASSE, E.M.B.K.
+
+================================================================================
+CREDITS
+================================================================================
+
+Icones          : Feather Icons
+Framework CSS   : Tailwind CSS
+Photos          : AI Generated
+
+"Un voyage culinaire à travers l'Afrique et le monde"
+
+© 2026 Délices Exotiques - Groupe 6
+
+Ce projet est un **projet académique** réalisé dans un cadre pédagogique.  
+
+================================================================================
+FIN DU DOCUMENT
+================================================================================

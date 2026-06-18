@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentification  </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/assets/imgs/logo.png" type="image/x-icon">
+    <script src="/components/tailwindcss.js"></script>
+    <script src="/components/navigation.js"></script>
+    <script src="/components/footer.js"></script>
+    <script src="/components/feather.min.js"></script>
+    <script src="/js/api.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: '#D4AF37',
+                        deepblack: '#0A0A0A',
+                        emerald: '#50C878',
+                        africanred: '#E32636',
+                        richbrown: '#5C4033',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+
+        /* Background pattern */
+        .pattern-bg {
+            background-image: 
+                linear-gradient(30deg, rgba(212, 175, 55, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(212, 175, 55, 0.03) 87.5%, rgba(212, 175, 55, 0.03)),
+                linear-gradient(150deg, rgba(212, 175, 55, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(212, 175, 55, 0.03) 87.5%, rgba(212, 175, 55, 0.03));
+            background-size: 80px 140px;
+        }
+    </style>
+</head>
+<body class="bg-deepblack text-white font-sans overflow-x-hidden">
+    <!-- Navigation -->
+    <custom-navigation></custom-navigation>
+
+    <!-- Auth Hero -->
+    <section class="relative min-h-screen flex items-center justify-center py-20 overflow-hidden pattern-bg">
+        <div class="absolute inset-0 bg-gradient-to-br from-black/60 via-deepblack/80 to-black/60 z-10"></div>
+        <div class="absolute inset-0">
+            <img src="/assets/imgs/img_intern.png" alt="Restaurant ambiance" class="w-full h-full object-cover opacity-20">
+        </div>
+        
+        <div class="relative z-20 container mx-auto px-4 max-w-6xl">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Left Side - Branding & Benefits -->
+                <div class="text-center lg:text-left animate-fade-in hidden lg:block">
+                    <h1 class="text-5xl md:text-6xl font-serif mb-6 text-gold">
+                        Délices Exotiques
+                    </h1>
+                    <p class="text-xl md:text-2xl mb-10 text-white/90 leading-relaxed">
+                        Rejoignez notre communauté et profitez d'avantages exclusifs
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="bg-gold/10 p-3 rounded-full mt-1">
+                                <i data-feather="gift" class="text-gold" width="24" height="24"></i>
+                            </div>
+                            <div class="text-left">
+                                <h3 class="text-lg font-medium text-gold mb-1">Cadeau de Bienvenue</h3>
+                                <p class="text-white/70">Cocktail signature offert lors de votre première visite</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4">
+                            <div class="bg-gold/10 p-3 rounded-full mt-1">
+                                <i data-feather="star" class="text-gold" width="24" height="24"></i>
+                            </div>
+                            <div class="text-left">
+                                <h3 class="text-lg font-medium text-gold mb-1">Réservations Prioritaires</h3>
+                                <p class="text-white/70">Accès aux meilleures tables avant tout le monde</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4">
+                            <div class="bg-gold/10 p-3 rounded-full mt-1">
+                                <i data-feather="percent" class="text-gold" width="24" height="24"></i>
+                            </div>
+                            <div class="text-left">
+                                <h3 class="text-lg font-medium text-gold mb-1">Réductions Exclusives</h3>
+                                <p class="text-white/70">10% sur toutes vos commandes et événements(lol)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Side - Auth Forms -->
+                <div class="animate-slide-in">
+                    <div class="bg-gradient-to-br from-richbrown/40 to-richbrown/20 border border-gold/30 rounded-2xl p-8 md:p-10 backdrop-blur-md shadow-2xl">
+                        <!-- Tab Buttons -->
+                        <div class="flex gap-2 mb-8 bg-deepblack/50 p-1 rounded-xl">
+                            <button id="loginTab" onclick="switchForm('login')" class="flex-1 py-3 px-4 rounded-lg font-medium transition-all duration-300 bg-gold text-deepblack">
+                                Connexion
+                            </button>
+                            <button id="signupTab" onclick="switchForm('signup')" class="flex-1 py-3 px-4 rounded-lg font-medium transition-all duration-300 text-white/70 hover:text-white">
+                                Inscription
+                            </button>
+                        </div>
+
+                        <!-- Login Form -->
+                        <div id="loginForm" class="form-container form-visible">
+                            <h2 class="text-3xl font-serif text-gold mb-2 text-center">Bon Retour !</h2>
+                            <p class="text-white/70 text-center mb-8">Connectez-vous pour accéder à votre compte</p>
+                            
+                            <form onsubmit="handleLogin(event)" class="space-y-6">
+                                <div>
+                                    <label for="login-email" class="block text-white/80 mb-2 font-medium">
+                                        <i data-feather="mail" class="inline w-4 h-4 mr-2 text-gold"></i>
+                                        Email
+                                    </label>
+                                    <input type="email" id="login-email" required class="w-full bg-deepblack/50 border border-gold/20 rounded-xl px-4 py-3 text-white focus:border-gold focus:outline-none transition-all" placeholder="votre@email.com">
+                                </div>
+                                
+                                <div>
+                                    <label for="login-password" class="block text-white/80 mb-2 font-medium">
+                                        <i data-feather="lock" class="inline w-4 h-4 mr-2 text-gold"></i>
+                                        Mot de passe
+                                    </label>
+                                    <div class="relative">
+                                        <input type="password" id="login-password" required class="w-full bg-deepblack/50 border border-gold/20 rounded-xl px-4 py-3 text-white focus:border-gold focus:outline-none transition-all pr-12" placeholder="********">
+                                        <button type="button" class="absolute right-4 top-1/2 -translate-y-1/2 text-gold/50 hover:text-gold transition-colors" onclick="togglePassword('login-password', this)">
+                                            <i data-feather="eye" width="20" height="20"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center justify-between">
+                                    <label class="inline-flex items-center cursor-pointer">
+                                        <input type="checkbox" class="form-checkbox bg-deepblack/50 border-gold/50 text-gold focus:ring-gold rounded">
+                                        <span class="ml-2 text-white/70 text-sm">Se souvenir de moi</span>
+                                    </label>
+                                    <span class="text-gold hover:text-gold/80 text-sm font-medium transition-colors hover:cursor-pointer" onclick="notify.warning('Contacter notre equipe technique', 4000)">Mot de passe oublié ?</span>
+                                </div>
+
+                                <button type="submit" class="w-full bg-gold hover:bg-gold/90 text-deepblack font-medium py-4 px-6 rounded-xl transition-all transform hover:scale-[1.02] shadow-lg flex items-center justify-center gap-2">
+                                    <i data-feather="log-in" width="20" height="20"></i>
+                                    Se connecter
+                                </button>
+
+                                <div class="relative my-6">
+                                    <div class="absolute inset-0 flex items-center">
+                                        <div class="w-full border-t border-gold/20"></div>
+                                    </div>
+                                    <div class="relative flex justify-center text-sm">
+                                        <span class="px-4 bg-richbrown/40 text-white/60">Ou continuer avec</span>
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-2 gap-4">
+                                    <button type="button" class="flex items-center justify-center gap-2 bg-deepblack/50 border border-gold/20 hover:border-gold/50 text-white py-3 px-4 rounded-xl transition-all" onclick="notify.info('option a venir')">
+                                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                                            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                                            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                                            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                                        </svg>
+                                        Google
+                                    </button>
+                                    <button type="button" class="flex items-center justify-center gap-2 bg-deepblack/50 border border-gold/20 hover:border-gold/50 text-white py-3 px-4 rounded-xl transition-all" onclick="notify.info('option a venir')">
+                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                        </svg>
+                                        Facebook
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Signup Form -->
+                        <div id="signupForm" class="form-container form-hidden">
+                            <h2 class="text-3xl font-serif text-gold mb-2 text-center">Créer un Compte</h2>
+                            <p class="text-white/70 text-center mb-8">Rejoignez notre club privilège</p>
+                            
+                            <form onsubmit="handleSignup(event)" class="space-y-5">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="signup-firstname" class="block text-white/80 mb-2 font-medium text-sm">
+                                            <i data-feather="user" class="inline w-4 h-4 mr-1 text-gold"></i>
+                                            Prénom
+                                        </label>
+                                        <input type="text" id="signup-firstname" required class="w-full bg-deepblack/50 border border-gold/20 rounded-xl px-4 py-3 text-white focus:border-gold focus:outline-none transition-all" placeholder="Jean">
+                                    </div>
+                                    <div>
+                                        <label for="signup-lastname" class="block text-white/80 mb-2 font-medium text-sm">
+                                            <i data-feather="user" class="inline w-4 h-4 mr-1 text-gold"></i>
+                                            Nom
+                                        </label>
+                                        <input type="text" id="signup-lastname" required class="w-full bg-deepblack/50 border border-gold/20 rounded-xl px-4 py-3 text-white focus:border-gold focus:outline-none transition-all" placeholder="Dupont">
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <label for="signup-email" class="block text-white/80 mb-2 font-medium text-sm">
+                                        <i data-feather="mail" class="inline w-4 h-4 mr-1 text-gold"></i>
+                                        Email
+                                    </label>
+                                    <input type="email" id="signup-email" required class="w-full bg-deepblack/50 border border-gold/20 rounded-xl px-4 py-3 text-white focus:border-gold focus:outline-none transition-all" placeholder="votre@email.com">
+                                </div>
+                                
+                                <div>
+                                    <label for="signup-phone" class="block text-white/80 mb-2 font-medium text-sm">
+                                        <i data-feather="phone" class="inline w-4 h-4 mr-1 text-gold"></i>
+                                        Téléphone
+                                    </label>
+                                    <input type="tel" id="signup-phone" class="w-full bg-deepblack/50 border border-gold/20 rounded-xl px-4 py-3 text-white focus:border-gold focus:outline-none transition-all" placeholder="+33 6 12 34 56 78">
+                                </div>
+                                
+                                <div>
+                                    <label for="signup-password" class="block text-white/80 mb-2 font-medium text-sm">
+                                        <i data-feather="lock" class="inline w-4 h-4 mr-1 text-gold"></i>
+                                        Mot de passe
+                                    </label>
+                                    <div class="relative">
+                                        <input type="password" id="signup-password" required class="w-full bg-deepblack/50 border border-gold/20 rounded-xl px-4 py-3 text-white focus:border-gold focus:outline-none transition-all pr-12" placeholder="********" oninput="checkPasswordStrength(this.value)">
+                                        <button type="button" class="absolute right-4 top-1/2 -translate-y-1/2 text-gold/50 hover:text-gold transition-colors" onclick="togglePassword('signup-password', this)">
+                                            <i data-feather="eye" width="20" height="20"></i>
+                                        </button>
+                                    </div>
+                                    <div class="strength-bar mt-2">
+                                        <div id="strengthFill" class="strength-fill"></div>
+                                    </div>
+                                    <p id="strengthText" class="text-xs text-white/50 mt-1"></p>
+                                </div>
+                                
+                                <div>
+                                    <label for="signup-confirm-password" class="block text-white/80 mb-2 font-medium text-sm">
+                                        <i data-feather="lock" class="inline w-4 h-4 mr-1 text-gold"></i>
+                                        Confirmer le mot de passe
+                                    </label>
+                                    <div class="relative">
+                                        <input type="password" id="signup-confirm-password" required class="w-full bg-deepblack/50 border border-gold/20 rounded-xl px-4 py-3 text-white focus:border-gold focus:outline-none transition-all pr-12" placeholder="********">
+                                        <button type="button" class="absolute right-4 top-1/2 -translate-y-1/2 text-gold/50 hover:text-gold transition-colors" onclick="togglePassword('signup-confirm-password', this)">
+                                            <i data-feather="eye" width="20" height="20"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label class="inline-flex items-center cursor-pointer">
+                                        <input type="checkbox" class="form-checkbox bg-deepblack/50 border-gold/50 text-gold focus:ring-gold rounded">
+                                        <span class="ml-2 text-white/70 text-sm">Je souhaite recevoir les offres exclusives</span>
+                                    </label>
+                                </div>
+
+                                <div>
+                                    <label class="inline-flex items-center cursor-pointer">
+                                        <input type="checkbox" id="terms" required class="form-checkbox bg-deepblack/50 border-gold/50 text-gold focus:ring-gold rounded">
+                                        <span class="ml-2 text-white/70 text-sm">J'accepte les <a href="/terms" class="text-gold hover:underline">conditions générales</a></span>
+                                    </label>
+                                </div>
+
+                                <button type="submit" class="w-full bg-gold hover:bg-gold/90 text-deepblack font-medium py-4 px-6 rounded-xl transition-all transform hover:scale-[1.02] shadow-lg flex items-center justify-center gap-2">
+                                    <i data-feather="user-plus" width="20" height="20"></i>
+                                    Créer mon compte
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Component -->
+    <custom-footer></custom-footer>
+    <script src="/js/auth-script.js"></script>
+    <script src="/components/utils.js"></script>
+</body>
+</html>

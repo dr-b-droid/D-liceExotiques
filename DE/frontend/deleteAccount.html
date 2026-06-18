@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supprimer mon compte  </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/assets/imgs/logo.png" type="image/x-icon">
+    <script src="/components/tailwindcss.js"></script>
+    <script src="/components/navigation.js"></script>
+    <script src="/components/footer.js"></script>
+    <script src="/components/feather.min.js"></script>
+    <script src="/js/api.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: '#D4AF37',
+                        deepblack: '#0A0A0A',
+                        emerald: '#50C878',
+                        africanred: '#E32636',
+                        richbrown: '#5C4033',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .pattern-bg {
+            background-image: 
+                linear-gradient(30deg, rgba(212, 175, 55, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(212, 175, 55, 0.03) 87.5%, rgba(212, 175, 55, 0.03)),
+                linear-gradient(150deg, rgba(212, 175, 55, 0.03) 12%, transparent 12.5%, transparent 87%, rgba(212, 175, 55, 0.03) 87.5%, rgba(212, 175, 55, 0.03));
+            background-size: 80px 140px;
+        }
+
+        .warning-pulse {
+            animation: pulse-warning 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes pulse-warning {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.7;
+            }
+        }
+
+        .shake {
+            animation: shake 0.5s;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+            20%, 40%, 60%, 80% { transform: translateX(10px); }
+        }
+    </style>
+</head>
+<body class="bg-deepblack text-white font-sans overflow-x-hidden">
+    <!-- Navigation -->
+    <custom-navigation></custom-navigation>
+
+    <!-- Delete Account Section -->
+    <section class="relative min-h-screen flex items-center justify-center py-20 overflow-hidden pattern-bg">
+        <div class="absolute inset-0 bg-gradient-to-br from-black/60 via-deepblack/80 to-black/60 z-10"></div>
+        
+        <div class="relative z-20 container mx-auto px-4 max-w-4xl">
+            <!-- Warning Header -->
+            <div class="text-center mb-12 animate-fade-in">
+                <div class="inline-block bg-africanred/20 p-6 rounded-full mb-6 warning-pulse">
+                    <i data-feather="alert-triangle" class="text-africanred" width="64" height="64"></i>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-serif mb-4 text-africanred">
+                    Supprimer mon compte
+                </h1>
+                <p class="text-xl text-white/70 max-w-2xl mx-auto">
+                    Cette action est irréversible. Toutes vos données seront définitivement supprimées.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Left Side - What will be deleted -->
+                <div class="bg-gradient-to-br from-richbrown/40 to-richbrown/20 border border-africanred/30 rounded-2xl p-8 backdrop-blur-md shadow-2xl">
+                    <h2 class="text-2xl font-serif text-africanred mb-6 flex items-center gap-3">
+                        <i data-feather="trash-2" width="24" height="24"></i>
+                        Données qui seront supprimées
+                    </h2>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-3 p-4 bg-deepblack/30 rounded-lg">
+                            <i data-feather="user" class="text-africanred mt-1" width="20" height="20"></i>
+                            <div>
+                                <h3 class="font-medium text-white mb-1">Informations personnelles</h3>
+                                <p class="text-white/60 text-sm">Nom, prénom, email, téléphone</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3 p-4 bg-deepblack/30 rounded-lg">
+                            <i data-feather="shopping-bag" class="text-africanred mt-1" width="20" height="20"></i>
+                            <div>
+                                <h3 class="font-medium text-white mb-1">Historique des commandes</h3>
+                                <p class="text-white/60 text-sm">Toutes vos commandes passées</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3 p-4 bg-deepblack/30 rounded-lg">
+                            <i data-feather="calendar" class="text-africanred mt-1" width="20" height="20"></i>
+                            <div>
+                                <h3 class="font-medium text-white mb-1">Réservations</h3>
+                                <p class="text-white/60 text-sm">Réservations actives et historique</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3 p-4 bg-deepblack/30 rounded-lg">
+                            <i data-feather="heart" class="text-africanred mt-1" width="20" height="20"></i>
+                            <div>
+                                <h3 class="font-medium text-white mb-1">Favoris et préférences</h3>
+                                <p class="text-white/60 text-sm">Plats favoris et préférences culinaires</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3 p-4 bg-deepblack/30 rounded-lg">
+                            <i data-feather="star" class="text-africanred mt-1" width="20" height="20"></i>
+                            <div>
+                                <h3 class="font-medium text-white mb-1">Avis et commentaires</h3>
+                                <p class="text-white/60 text-sm">Tous vos avis publiés</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3 p-4 bg-deepblack/30 rounded-lg">
+                            <i data-feather="gift" class="text-africanred mt-1" width="20" height="20"></i>
+                            <div>
+                                <h3 class="font-medium text-white mb-1">Points de fidélité</h3>
+                                <p class="text-white/60 text-sm">Tous vos avantages et réductions</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 p-4 bg-africanred/10 border border-africanred/30 rounded-lg">
+                        <p class="text-sm text-white/80 flex items-start gap-2">
+                            <i data-feather="info" class="text-africanred mt-0.5 flex-shrink-0" width="16" height="16"></i>
+                            <span>Les factures déjà émises seront conservées conformément aux obligations légales.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Right Side - Deletion Form -->
+                <div class="bg-gradient-to-br from-richbrown/40 to-richbrown/20 border border-africanred/30 rounded-2xl p-8 backdrop-blur-md shadow-2xl">
+                    <h2 class="text-2xl font-serif text-africanred mb-6 flex items-center gap-3">
+                        <i data-feather="shield" width="24" height="24"></i>
+                        Confirmation de suppression
+                    </h2>
+
+                    <form id="deleteForm" onsubmit="handleDeleteAccount(event)" class="space-y-6">
+                        <!-- Reason Selection -->
+                        <div>
+                            <label class="block text-white/80 mb-3 font-medium">
+                                <i data-feather="help-circle" class="inline w-4 h-4 mr-2 text-africanred"></i>
+                                Pourquoi souhaitez-vous supprimer votre compte ?
+                            </label>
+                            <select id="deleteReason" required 
+                                    class="w-full bg-deepblack/50 border border-africanred/30 rounded-xl px-4 py-3 text-white focus:border-africanred focus:outline-none">
+                                <option value="">Sélectionnez une raison</option>
+                                <option value="service">Service insatisfaisant</option>
+                                <option value="quality">Qualité des plats</option>
+                                <option value="price">Prix trop élevés</option>
+                                <option value="delivery">Problèmes de livraison</option>
+                                <option value="privacy">Préoccupations de confidentialité</option>
+                                <option value="unused">Je n'utilise plus le service</option>
+                                <option value="other">Autre raison</option>
+                            </select>
+                        </div>
+
+                        <!-- Other Reason -->
+                        <div id="otherReasonDiv" style="display: none;">
+                            <label class="block text-white/80 mb-2 font-medium">Précisez la raison</label>
+                            <textarea id="otherReason" rows="3"
+                                      class="w-full bg-deepblack/50 border border-africanred/30 rounded-xl px-4 py-3 text-white focus:border-africanred focus:outline-none resize-none"
+                                      placeholder="Expliquez-nous pourquoi..."></textarea>
+                        </div>
+
+                        <!-- Password Confirmation -->
+                        <div>
+                            <label class="block text-white/80 mb-2 font-medium">
+                                <i data-feather="lock" class="inline w-4 h-4 mr-2 text-africanred"></i>
+                                Confirmez votre mot de passe
+                            </label>
+                            <div class="relative">
+                                <input type="password" id="confirmPassword" required
+                                       class="w-full bg-deepblack/50 border border-africanred/30 rounded-xl px-4 py-3 pr-12 text-white focus:border-africanred focus:outline-none"
+                                       placeholder="Votre mot de passe">
+                                <button type="button" onclick="togglePassword('confirmPassword', this)" 
+                                        class="absolute right-3 top-1/2 -translate-y-1/2 text-white/60 hover:text-white transition-colors">
+                                    <i data-feather="eye" width="20" height="20"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Final Confirmation -->
+                        <div>
+                            <label class="block text-white/80 mb-2 font-medium">
+                                <i data-feather="alert-circle" class="inline w-4 h-4 mr-2 text-africanred"></i>
+                                Tapez "SUPPRIMER MON COMPTE" pour confirmer
+                            </label>
+                            <input type="text" id="finalConfirmation" required
+                                   class="w-full bg-deepblack/50 border border-africanred/30 rounded-xl px-4 py-3 text-white focus:border-africanred focus:outline-none font-mono"
+                                   placeholder="SUPPRIMER MON COMPTE"
+                                   autocomplete="off">
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" id="deleteButton"
+                                class="w-full bg-africanred hover:bg-africanred/90 text-white font-medium py-4 px-6 rounded-xl transition-all transform hover:scale-[1.02] flex items-center justify-center gap-3 shadow-lg shadow-africanred/30">
+                            <i data-feather="trash-2" width="20" height="20"></i>
+                            Supprimer définitivement
+                        </button>
+
+                        <p class="text-center text-white/50 text-sm">
+                            Cette action est définitive et ne peut pas être annulée
+                        </p>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Alternatives Section -->
+            <div class="mt-12 bg-gradient-to-br from-gold/10 to-gold/5 border border-gold/30 rounded-2xl p-8">
+                <h2 class="text-2xl font-serif text-gold mb-6 text-center">
+                    Avant de partir, avez-vous envisagé ces alternatives ?
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="text-center p-6 bg-deepblack/30 rounded-xl hover:bg-deepblack/40 transition-all">
+                        <i data-feather="pause-circle" class="text-gold mx-auto mb-4" width="48" height="48"></i>
+                        <h4 class="text-lg font-medium text-white mb-2">Désactiver temporairement</h4>
+                        <p class="text-white/60 text-sm mb-4">Faites une pause sans perdre vos données</p>
+                        <button class="text-gold hover:text-gold/80 text-sm font-medium">
+                            En savoir plus 
+                        </button>
+                    </div>
+
+                    <div class="text-center p-6 bg-deepblack/30 rounded-xl hover:bg-deepblack/40 transition-all">
+                        <i data-feather="bell-off" class="text-gold mx-auto mb-4" width="48" height="48"></i>
+                        <h4 class="text-lg font-medium text-white mb-2">Gérer les notifications</h4>
+                        <p class="text-white/60 text-sm mb-4">Ajustez vos préférences de communication</p>
+                        <a href="/profile#notifications" class="text-gold hover:text-gold/80 text-sm font-medium">
+                            Configurer 
+                        </a>
+                    </div>
+
+                    <div class="text-center p-6 bg-deepblack/30 rounded-xl hover:bg-deepblack/40 transition-all">
+                        <i data-feather="settings" class="text-gold mx-auto mb-4" width="48" height="48"></i>
+                        <h4 class="text-lg font-medium text-white mb-2">Modifier mes données</h4>
+                        <p class="text-white/60 text-sm mb-4">Mettez à jour vos informations personnelles</p>
+                        <a href="/profile#settings" class="text-gold hover:text-gold/80 text-sm font-medium">
+                            Modifier 
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+        <div class="bg-gradient-to-br from-richbrown/90 to-richbrown/70 border border-africanred/50 rounded-2xl p-8 max-w-md w-full shadow-2xl animate-fade-in">
+            <div class="text-center mb-6">
+                <div class="inline-block bg-africanred/20 p-4 rounded-full mb-4">
+                    <i data-feather="alert-circle" class="text-africanred" width="48" height="48"></i>
+                </div>
+                <h3 class="text-2xl font-serif text-africanred mb-2">Dernière confirmation</h3>
+                <p class="text-white/80">Etes-vous absolument certain de vouloir supprimer votre compte ?</p>
+            </div>
+            
+            <div class="space-y-4">
+                <button onclick="confirmDeletion()" class="w-full bg-africanred hover:bg-africanred/90 text-white font-medium py-3 px-6 rounded-xl transition-all">
+                    Oui, supprimer mon compte
+                </button>
+                <button onclick="closeModal()" class="w-full bg-deepblack/50 border border-gold/30 hover:border-gold text-white font-medium py-3 px-6 rounded-xl transition-all">
+                    Non, conserver mon compte
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Component -->
+    <custom-footer></custom-footer>
+
+    <script src="/components/utils.js"></script>
+    <script src="/js/deleteAccount-script.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+{
+  "name": "delices-exotiques-backend",
+  "version": "1.0.0",
+  "description": "Backend API pour Délices Exotiques - Restaurant gastronomique africain",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js",
+    "init": "node scripts/init-data.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "restaurant",
+    "api",
+    "backend",
+    "authentication",
+    "orders",
+    "reservations"
+  ],
+  "author": "Délices Exotiques",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^2.2.1",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^4.22.1",
+    "express-session": "^1.18.2",
+    "path": "^0.12.7",
+    "pm2": "^6.0.14"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  }
+}

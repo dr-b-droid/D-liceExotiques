@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>404</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="/assets/imgs/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+      .error-page {
+        background: #f8f6f2;
+        color: #0a0a0a;
+      }
+
+      .error-wrapper {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 4rem 1.5rem;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        align-items: center;
+      }
+
+      .error-visual img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .error-text {
+        text-align: center;
+      }
+
+      .error-text h1 {
+        font-family: "Playfair Display", serif;
+        font-size: 2.2rem;
+        font-style: italic;
+        color: #d4af37;
+        margin-bottom: 1rem;
+      }
+
+      .error-text p {
+        font-family: "Inter", sans-serif;
+        font-size: 1rem;
+        line-height: 1.7;
+        color: #444;
+        margin-bottom: 2rem;
+      }
+
+      .error-link {
+        display: inline-block;
+        font-family: "Inter", sans-serif;
+        font-weight: 500;
+        text-decoration: none;
+        color: #0a0a0a;
+        border: 1px solid #d4af37;
+        padding: 0.75rem 1.75rem;
+        border-radius: 999px;
+        transition: all 0.25s ease;
+      }
+
+      .error-link:hover {
+        background: #d4af37;
+        color: #0a0a0a;
+      }
+
+      @media (min-width: 768px) {
+        .error-wrapper {
+          grid-template-columns: 1.2fr 0.8fr;
+        }
+
+        .error-text {
+          text-align: left;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="error-page">
+    <main class="error-wrapper">
+      <!-- Image 404 -->
+      <figure class="error-visual animate-fade-in-delay">
+        <img src="/assets/imgs/page-404-restaurant.png" alt="Ce mets n 'est plus à la carte — Délices Exotiques" />
+      </figure>
+
+      <!-- Texte -->
+      <section class="error-text animate-fade-in">
+        <h1>Ce mets n'est plus à la table</h1>
+
+        <p>
+          Cette page a discrètement quitté notre menu.<br />
+          Laissez-vous guider vers une autre saveur.
+        </p>
+
+        <a href="/" class="error-link animate-bounce-in">Retour à l 'accueil</a>
+      </section>
+    </main>
+  </body>
+</html>

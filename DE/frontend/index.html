@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Délices Exotiques - Restaurant Gastronomique</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/assets/imgs/logo.png" type="image/x-icon">
+    <script src="/components/tailwindcss.js"></script>
+    <script src="/components/navigation.js"></script>
+    <script src="/components/footer.js"></script>
+    <script src="/components/feather.min.js"></script>
+    <script src="/js/api.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: '#D4AF37',
+                        deepblack: '#0A0A0A',
+                        emerald: '#50C878',
+                        africanred: '#E32636',
+                        richbrown: '#5C4033',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-deepblack text-white font-sans overflow-x-hidden">
+    <!-- Main Navigation -->
+    <custom-navigation></custom-navigation>
+    
+    <!-- Hero Section -->
+    <section class="relative h-screen overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-deepblack z-10"></div>
+        <div class="absolute inset-0 scale-105">
+            <img src="/assets/imgs/index2.png" alt="Restaurant" class="w-full h-full object-cover scale-[0.85] animate-slow-zoom">
+        </div>
+        
+        <div class="relative z-20 h-full flex flex-col justify-center items-center text-center px-4">
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-serif mb-6 text-gold animate-fade-in">
+                <span class="block">Délices</span>
+                <span class="block">Exotiques</span>
+            </h1>
+            <p class="text-xl md:text-2xl lg:text-3xl max-w-3xl mb-10 text-white/90 animate-fade-in-delay">
+                Une symphonie de saveurs revisitées avec élégance
+            </p>
+            <a href="/reservation" class="bg-gold hover:bg-gold/90 text-deepblack px-10 py-4 rounded-full font-medium text-lg transition-all transform hover:scale-105 animate-bounce-in shadow-xl hover:shadow-2xl">
+                Réserver une table
+            </a>
+            
+            <!-- Scroll indicator -->
+            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+                <i data-feather="chevron-down" class="text-gold" width="32" height="32"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-16 px-4 md:px-8 lg:px-16 bg-richbrown/10 border-y border-gold/10 fade-in-section">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center stagger-item">
+                    <div class="text-4xl md:text-5xl font-serif text-gold mb-2">15+</div>
+                    <p class="text-white/70">Années d'Excellence</p>
+                </div>
+                <div class="text-center stagger-item">
+                    <div class="text-4xl md:text-5xl font-serif text-gold mb-2">50K+</div>
+                    <p class="text-white/70">Clients Satisfaits</p>
+                </div>
+                <div class="text-center stagger-item">
+                    <div class="text-4xl md:text-5xl font-serif text-gold mb-2 flex flex-center text-center item-center justify-center">
+                        <i data-feather="star" class="text-gold fill-current" width="20" height="20"></i>
+                        <i data-feather="star" class="text-gold fill-current" width="20" height="20"></i>
+                        <i data-feather="star" class="text-gold fill-current" width="20" height="20"></i>
+                    </div>
+                    <p class="text-white/70">Guide Michelin</p>
+                </div>
+                <div class="text-center stagger-item">
+                    <div class="text-4xl md:text-5xl font-serif text-gold mb-2">100%</div>
+                    <p class="text-white/70">Produits Bio</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Signature Dishes -->
+    <section class="py-20 px-4 md:px-8 lg:px-16" id="menu">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 fade-in-section">
+                <h2 class="text-4xl md:text-5xl font-serif mb-4 text-gold">Nos Créations Signature</h2>
+                <p class="text-white/70 max-w-2xl mx-auto text-lg">
+                    Découvrez nos plats emblématiques, fusion parfaite entre tradition africaine et gastronomie moderne
+                </p>
+            </div>
+            
+            <div id="signatureDishes" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+                <!-- Loading skeleton -->
+                <div class="animate-pulse">
+                    <div class="bg-richbrown/20 rounded-2xl h-96"></div>
+                </div>
+                <div class="animate-pulse">
+                    <div class="bg-richbrown/20 rounded-2xl h-96"></div>
+                </div>
+                <div class="animate-pulse">
+                    <div class="bg-richbrown/20 rounded-2xl h-96"></div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12 fade-in-section">
+                <a href="/menu" class="inline-block bg-gold hover:bg-gold/90 text-deepblack px-10 py-4 rounded-full font-medium text-lg transition-all transform hover:scale-105 shadow-lg">
+                    Voir tout le menu
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="py-20 bg-richbrown/20 relative overflow-hidden pattern-bg" id="about">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-16 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+                <div class="lg:w-1/2 fade-in-left">
+                    <div class="inline-block bg-gold/10 px-4 py-2 rounded-full mb-6">
+                        <span class="text-gold text-sm font-medium"><i data-feather="star" class="text-gold fill-current" width="20" height="20"></i> GUIDE MICHELIN 2023</span>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-serif mb-6 text-gold">Une Expérience Culinaire Unique</h2>
+                    <p class="text-lg text-white/90 mb-6 leading-relaxed">
+                        Chez Délices Exotiques, nous fusionnons les traditions culinaires africaines avec des techniques avant-gardistes pour créer une expérience gastronomique inoubliable.
+                    </p>
+                    <p class="text-lg text-white/90 mb-8 leading-relaxed">
+                        Notre chef étoilé revisite les classiques avec une touche contemporaine, utilisant des ingrédients d'exception provenant des quatre coins du continent.
+                    </p>
+                    <div class="flex flex-wrap gap-6 mb-8">
+                        <div class="flex items-center gap-3">
+                            <div class="bg-gold/10 p-3 rounded-full">
+                                <i data-feather="star" class="text-gold" width="24" height="24"></i>
+                            </div>
+                            <div>
+                                <div class="text-white font-medium">Guide Michelin</div>
+                                <div class="text-white/60 text-sm">3 étoiles</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="bg-gold/10 p-3 rounded-full">
+                                <i data-feather="award" class="text-gold" width="24" height="24"></i>
+                            </div>
+                            <div>
+                                <div class="text-white font-medium">Meilleur Restaurant</div>
+                                <div class="text-white/60 text-sm">Africain 2023</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="/history" class="inline-flex items-center gap-2 text-gold hover:text-gold/80 font-medium text-lg group">
+                        Découvrir notre histoire
+                        <i data-feather="arrow-right" class="transition-transform group-hover:translate-x-2" width="20" height="20"></i>
+                    </a>
+                </div>
+                <div class="lg:w-1/2 relative fade-in-right">
+                    <div class="relative group">
+                        <div class="absolute -inset-4 bg-gold/20 rounded-2xl blur-xl group-hover:blur-lg transition-all"></div>
+                        <img src="/assets/imgs/logo.png" alt="Intérieur du restaurant" class="relative rounded-2xl shadow-2xl w-full h-auto">
+                        <div class="absolute -bottom-6 -right-6 bg-gradient-to-br from-gold to-gold/80 p-6 rounded-xl shadow-2xl transform rotate-3 group-hover:rotate-0 transition-transform duration-500">
+                            <p class="text-deepblack font-serif italic text-lg">"Une révélation gastronomique"</p>
+                            <p class="text-deepblack/80 font-medium mt-1">- Le Monde</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-20 px-4 md:px-8 lg:px-16" id="services">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 fade-in-section">
+                <h2 class="text-4xl md:text-5xl font-serif mb-4 text-gold">Nos Services Exclusifs</h2>
+                <p class="text-white/70 max-w-2xl mx-auto text-lg">
+                    Des prestations d'exception pour sublimer chaque moment
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-gradient-to-br from-richbrown/30 to-richbrown/10 border border-gold/20 rounded-2xl p-8 hover:border-gold/50 transition-all duration-300 group hover:cursor-pointer scale-in">
+                    <div class="bg-gold/10 p-4 rounded-full w-16 h-16 flex items-center justify-center mb-6 group-hover:bg-gold/20 group-hover:scale-110 transition-all duration-300">
+                        <i data-feather="calendar" class="text-gold" width="28" height="28"></i>
+                    </div>
+                    <h3 class="text-2xl font-serif text-gold mb-4">Soirées Privées</h3>
+                    <p class="text-white/80 mb-6 leading-relaxed">
+                        Organisez vos événements dans notre salon VIP avec menu personnalisé et service dédié.
+                    </p>
+                    <a href="/contact#contact" class="text-gold flex items-center gap-2 font-medium group-hover:gap-3 transition-all">
+                        En savoir plus
+                        <i data-feather="arrow-right" width="18" height="18"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="bg-gradient-to-br from-richbrown/30 to-richbrown/10 border border-gold/20 rounded-2xl p-8 hover:border-gold/50 transition-all duration-300 group hover:cursor-pointer scale-in">
+                    <div class="bg-gold/10 p-4 rounded-full w-16 h-16 flex items-center justify-center mb-6 group-hover:bg-gold/20 group-hover:scale-110 transition-all duration-300">
+                        <i data-feather="package" class="text-gold" width="28" height="28"></i>
+                    </div>
+                    <h3 class="text-2xl font-serif text-gold mb-4">Livraison Express</h3>
+                    <p class="text-white/80 mb-6 leading-relaxed">
+                        Recevez vos plats en moins de 30 minutes grâce à notre service de livraison premium.
+                    </p>
+                    <a href="/menu" class="text-gold flex items-center gap-2 font-medium group-hover:gap-3 transition-all">
+                        Commander
+                        <i data-feather="arrow-right" width="18" height="18"></i>
+                    </a>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="bg-gradient-to-br from-richbrown/30 to-richbrown/10 border border-gold/20 rounded-2xl p-8 hover:border-gold/50 transition-all duration-300 group hover:cursor-pointer scale-in">
+                    <div class="bg-gold/10 p-4 rounded-full w-16 h-16 flex items-center justify-center mb-6 group-hover:bg-gold/20 group-hover:scale-110 transition-all duration-300">
+                        <i data-feather="heart" class="text-gold" width="28" height="28"></i>
+                    </div>
+                    <h3 class="text-2xl font-serif text-gold mb-4">Mariages & Evénements</h3>
+                    <p class="text-white/80 mb-6 leading-relaxed">
+                        Création de menus sur mesure pour vos moments spéciaux, de la cérémonie au cocktail.
+                    </p>
+                    <a href="/events" class="text-gold flex items-center gap-2 font-medium group-hover:gap-3 transition-all">
+                        Planifier
+                        <i data-feather="arrow-right" width="18" height="18"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 px-4 md:px-8 lg:px-16 bg-richbrown/10">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 fade-in-section">
+                <h2 class="text-4xl md:text-5xl font-serif mb-4 text-gold">Ils Nous Font Confiance</h2>
+                <p class="text-white/70 max-w-2xl mx-auto text-lg">
+                    Découvrez les avis de nos clients
+                </p>
+            </div>
+            
+            <div id="testimonials" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Loading skeleton -->
+                <div class="animate-pulse">
+                    <div class="bg-deepblack/50 border border-gold/20 rounded-2xl p-8">
+                        <div class="h-4 bg-white/10 rounded w-1/2 mb-4"></div>
+                        <div class="h-3 bg-white/10 rounded w-full mb-2"></div>
+                        <div class="h-3 bg-white/10 rounded w-3/4"></div>
+                    </div>
+                </div>
+                <div class="animate-pulse">
+                    <div class="bg-deepblack/50 border border-gold/20 rounded-2xl p-8">
+                        <div class="h-4 bg-white/10 rounded w-1/2 mb-4"></div>
+                        <div class="h-3 bg-white/10 rounded w-full mb-2"></div>
+                        <div class="h-3 bg-white/10 rounded w-3/4"></div>
+                    </div>
+                </div>
+                <div class="animate-pulse">
+                    <div class="bg-deepblack/50 border border-gold/20 rounded-2xl p-8">
+                        <div class="h-4 bg-white/10 rounded w-1/2 mb-4"></div>
+                        <div class="h-3 bg-white/10 rounded w-full mb-2"></div>
+                        <div class="h-3 bg-white/10 rounded w-3/4"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12 fade-in-section">
+                <a href="/about#reviewsList" class="inline-block bg-gold/20 hover:bg-gold/30 text-gold border border-gold/30 px-8 py-3 rounded-full font-medium text-lg transition-all transform hover:scale-105">
+                    Voir tous les avis
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservation Section -->
+    <section class="py-20" id="reservation">
+        <div class="max-w-4xl mx-auto px-4 md:px-8">
+            <div class="border border-gold/30 rounded-2xl p-8 md:p-12 backdrop-blur-sm shadow-2xl fade-in-section">
+                <div class="text-center mb-10">
+                    <h2 class="text-4xl md:text-5xl font-serif mb-4 text-gold">Réserver une Table</h2>
+                    <p class="text-white/70 text-lg">Réservez dès maintenant votre expérience gastronomique</p>
+                </div>
+                <div class="relative z-20 h-full flex flex-col justify-center items-center text-center px-4">
+                    <a href="/reservation" class="bg-gold hover:bg-gold/90 text-deepblack px-10 py-4 rounded-full font-medium text-lg transition-all transform hover:scale-105 animate-bounce-in shadow-xl hover:shadow-2xl">
+                        Réserver
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Component -->
+    <custom-footer></custom-footer>
+    <script src="/js/index-script.js"></script>
+    <script>
+        
+    </script>
+    <script src="/components/utils.js"></script>
+</body>
+</html>

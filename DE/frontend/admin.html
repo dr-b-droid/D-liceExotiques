@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard  </title>
+    <link rel="shortcut icon" href="/assets/imgs/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/components/tailwindcss.js"></script>
+    <script src="/components/feather.min.js"></script>
+    <script src="/js/api.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: '#D4AF37',
+                        deepblack: '#0A0A0A',
+                        emerald: '#50C878',
+                        africanred: '#E32636',
+                        richbrown: '#5C4033',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .nav-btn { color: rgba(255,255,255,0.6); }
+        .nav-btn.active { background: rgba(212,175,55,0.2); color: #D4AF37; }
+        .nav-btn:hover { background: rgba(212,175,55,0.1); }
+        .status-badge { padding: 0.25rem 0.75rem; border-radius: 0.5rem; font-size: 0.875rem; font-weight: 500; }
+        .status-pending { background: rgba(255,193,7,0.2); color: #FFC107; }
+        .status-confirmed { background: rgba(80,200,120,0.2); color: #50C878; }
+        .status-cancelled { background: rgba(227,38,54,0.2); color: #E32636; }
+        .status-completed { background: rgba(33,150,243,0.2); color: #2196F3; }
+        .status-preparing { background: rgba(255,152,0,0.2); color: #FF9800; }
+        .status-delivering { background: rgba(156,39,176,0.2); color: #9C27B0; }
+    </style>
+</head>
+<body class="bg-deepblack text-white">
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-richbrown/40 border-r border-gold/30 flex flex-col">
+            <div class="p-6 border-b border-gold/30">
+                <h1 class="text-2xl font-serif text-gold">Délices Exotiques</h1>
+                <p class="text-sm text-white/60">Admin Dashboard</p>
+            </div>
+            
+            <nav class="flex-1 p-4 space-y-2 overflow-y-auto">
+                <button onclick="switchSection('dashboard')" class="nav-btn active w-full text-left px-4 py-3 rounded-lg transition-all flex items-center gap-3">
+                    <i data-feather="grid" width="20" height="20"></i>
+                    <span>Dashboard</span>
+                </button>
+                <button onclick="switchSection('menus')" class="nav-btn w-full text-left px-4 py-3 rounded-lg transition-all flex items-center gap-3">
+                    <i data-feather="book-open" width="20" height="20"></i>
+                    <span>Gestion des Menus</span>
+                </button>
+                <button onclick="switchSection('reservations')" class="nav-btn w-full text-left px-4 py-3 rounded-lg transition-all flex items-center gap-3">
+                    <i data-feather="calendar" width="20" height="20"></i>
+                    <span>Réservations</span>
+                    <span id="pendingReservations" class="ml-auto px-2 py-1 bg-gold rounded-full text-xs text-deepblack font-bold"></span>
+                </button>
+                <button onclick="switchSection('orders')" class="nav-btn w-full text-left px-4 py-3 rounded-lg transition-all flex items-center gap-3">
+                    <i data-feather="shopping-bag" width="20" height="20"></i>
+                    <span>Commandes</span>
+                    <span id="pendingOrders" class="ml-auto px-2 py-1 bg-emerald rounded-full text-xs text-deepblack font-bold"></span>
+                </button>
+                <button onclick="switchSection('events')" class="nav-btn w-full text-left px-4 py-3 rounded-lg transition-all flex items-center gap-3">
+                    <i data-feather="star" width="20" height="20"></i>
+                    <span>Evénements</span>
+                    <span id="pendingEvents" class="ml-auto px-2 py-1 bg-africanred rounded-full text-xs text-deepblack font-bold"></span>
+                </button>
+                <button onclick="switchSection('users')" class="nav-btn w-full text-left px-4 py-3 rounded-lg transition-all flex items-center gap-3">
+                    <i data-feather="users" width="20" height="20"></i>
+                    <span>Utilisateurs</span>
+                </button>
+            </nav>
+
+            <div class="p-4 border-t border-gold/30">
+                <button onclick="handleLogout()" class="w-full px-4 py-3 bg-africanred/20 hover:bg-africanred/30 text-africanred rounded-lg transition-all flex items-center gap-3">
+                    <i data-feather="log-out" width="20" height="20"></i>
+                    <span>Déconnexion</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 overflow-y-auto">
+            <!-- Dashboard -->
+            <div id="dashboard" class="tab-content active p-8">
+                <h2 class="text-3xl font-serif text-gold mb-8">Tableau de bord</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                    <div class="bg-gradient-to-br from-richbrown/40 to-richbrown/20 border border-gold/30 rounded-2xl p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="p-3 bg-blue-500/20 rounded-xl">
+                                <i data-feather="users" class="text-blue-500" width="24" height="24"></i>
+                            </div>
+                            <span id="totalUsers" class="text-3xl font-bold text-blue-500">0</span>
+                        </div>
+                        <h3 class="text-white/80">Utilisateurs</h3>
+                        <p class="text-white/50 text-sm mt-1" id="newUsersThisMonth">+0 ce mois</p>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-richbrown/40 to-richbrown/20 border border-gold/30 rounded-2xl p-6">
+    <div class="flex items-center justify-between mb-4">
+        <div class="p-3 bg-emerald/20 rounded-xl text-emerald flex items-center justify-center">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M10 7v10 M10 7h5 M10 12h4" />
+            </svg>
+        </div>
+        <span id="totalRevenue" class="text-3xl font-bold text-emerald">0</span>
+    </div>
+    <h3 class="text-white/80">Recettes totales</h3>
+    <p class="text-white/50 text-sm mt-1" id="avgOrderValue">
+        Moy: 0 FCFA
+    </p>
+</div>
+
+
+                    <div class="bg-gradient-to-br from-richbrown/40 to-richbrown/20 border border-gold/30 rounded-2xl p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="p-3 bg-gold/20 rounded-xl">
+                                <i data-feather="calendar" class="text-gold" width="24" height="24"></i>
+                            </div>
+                            <span id="totalReservations" class="text-3xl font-bold text-gold">0</span>
+                        </div>
+                        <h3 class="text-white/80">Réservations</h3>
+                        <p class="text-white/50 text-sm mt-1" id="confirmedReservations">0 confirmées</p>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-richbrown/40 to-richbrown/20 border border-gold/30 rounded-2xl p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="p-3 bg-africanred/20 rounded-xl">
+                                <i data-feather="shopping-bag" class="text-africanred" width="24" height="24"></i>
+                            </div>
+                            <span id="totalOrders" class="text-3xl font-bold text-africanred">0</span>
+                        </div>
+                        <h3 class="text-white/80">Commandes</h3>
+                        <p class="text-white/50 text-sm mt-1" id="completedOrders">0 complétées</p>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-richbrown/40 to-richbrown/20 border border-gold/30 rounded-2xl p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="p-3 bg-purple-500/20 rounded-xl">
+                                <i data-feather="star" class="text-purple-500" width="24" height="24"></i>
+                            </div>
+                            <span id="totalEvents" class="text-3xl font-bold text-purple-500">0</span>
+                        </div>
+                        <h3 class="text-white/80">Evénements</h3>
+                        <p class="text-white/50 text-sm mt-1" id="confirmedEvents">0 confirmés</p>
+                    </div>
+
+                    <div class="bg-gradient-to-br from-richbrown/40 to-richbrown/20 border border-gold/30 rounded-2xl p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="p-3 bg-orange-500/20 rounded-xl">
+                                <i data-feather="book-open" class="text-orange-500" width="24" height="24"></i>
+                            </div>
+                            <span id="totalMenus" class="text-3xl font-bold text-orange-500">0</span>
+                        </div>
+                        <h3 class="text-white/80">Menus actifs</h3>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-br from-richbrown/40 to-richbrown/20 border border-gold/30 rounded-2xl p-6">
+                    <h3 class="text-xl font-serif text-gold mb-4">Demandes en attente</h3>
+                    <div id="pendingRequests" class="space-y-4">
+                        <p class="text-white/60">Chargement...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Menu Management -->
+            <div id="menus" class="tab-content p-8">
+                <div class="flex items-center justify-between mb-8">
+                    <h2 class="text-3xl font-serif text-gold">Gestion des Menus</h2>
+                    <button onclick="showAddMenuModal()" class="px-6 py-3 bg-gold hover:bg-gold/90 text-deepblack font-medium rounded-xl transition-all flex items-center gap-2">
+                        <i data-feather="plus" width="20" height="20"></i>
+                        Ajouter un menu
+                    </button>
+                </div>
+
+                <!-- Filters and Search -->
+                <div class="bg-richbrown/40 border border-gold/30 rounded-2xl p-6 mb-6">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="md:col-span-2">
+                            <label class="block text-white/80 mb-2 text-sm">Rechercher un menu</label>
+                            <input type="text" id="menuSearch" placeholder="Nom du menu..." oninput="filterMenus()"
+                                   class="w-full bg-deepblack/50 border border-gold/20 rounded-xl px-4 py-3 text-white focus:border-gold focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-white/80 mb-2 text-sm">Catégorie</label>
+                            <select id="menuCategoryFilter" onchange="filterMenus()"
+                                    class="w-full bg-deepblack/50 border border-gold/20 rounded-xl px-4 py-3 text-white focus:border-gold focus:outline-none">
+                                <option value="">Toutes les catégories</option>
+                                <option value="entrees">Entrées</option>
+                                <option value="plats">Plats principaux</option>
+                                <option value="desserts">Desserts</option>
+                                <option value="boissons">Boissons</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="menusList" class="grid grid-cols-1 gap-6">
+                    <p class="text-white/60">Chargement...</p>
+                </div>
+            </div>
+
+            <!-- Reservations Management -->
+            <div id="reservations" class="tab-content p-8">
+                <h2 class="text-3xl font-serif text-gold mb-8">Gestion des Réservations</h2>
+                
+                <!-- Filter -->
+                <div class="bg-richbrown/40 border border-gold/30 rounded-2xl p-6 mb-6">
+                    <label class="block text-white/80 mb-2 text-sm">Filtrer par statut</label>
+                    <select id="reservationStatusFilter" onchange="filterReservations()"
+                            class="w-full md:w-64 bg-deepblack/50 border border-gold/20 rounded-xl px-4 py-3 text-white focus:border-gold focus:outline-none">
+                        <option value="">Tous les statuts</option>
+                        <option value="pending">En attente</option>
+                        <option value="confirmed">Confirmé</option>
+                        <option value="cancelled">Annulé</option>
+                        <option value="completed">Terminé</option>
+                    </select>
+                </div>
+
+                <div id="reservationsList" class="space-y-4">
+                    <p class="text-white/60">Chargement...</p>
+                </div>
+            </div>
+
+            <!-- Orders Management -->
+            <div id="orders" class="tab-content p-8">
+                <h2 class="text-3xl font-serif text-gold mb-8">Gestion des Commandes</h2>
+                
+                <!-- Filter -->
+                <div class="bg-richbrown/40 border border-gold/30 rounded-2xl p-6 mb-6">
+                    <label class="block text-white/80 mb-2 text-sm">Filtrer par statut</label>
+                    <select id="orderStatusFilter" onchange="filterOrders()"
+                            class="w-full md:w-64 bg-deepblack/50 border border-gold/20 rounded-xl px-4 py-3 text-white focus:border-gold focus:outline-none">
+                        <option value="">Tous les statuts</option>
+                        <option value="pending">En attente</option>
+                        <option value="confirmed">Confirmé</option>
+                        <option value="preparing">En préparation</option>
+                        <option value="delivering">En livraison</option>
+                        <option value="completed">Terminé</option>
+                        <option value="cancelled">Annulé</option>
+                    </select>
+                </div>
+
+                <div id="ordersList" class="space-y-4">
+                    <p class="text-white/60">Chargement...</p>
+                </div>
+            </div>
+
+            <!-- Events Management -->
+            <div id="events" class="tab-content p-8">
+                <h2 class="text-3xl font-serif text-gold mb-8">Gestion des Evénements</h2>
+                
+                <!-- Filter -->
+                <div class="bg-richbrown/40 border border-gold/30 rounded-2xl p-6 mb-6">
+                    <label class="block text-white/80 mb-2 text-sm">Filtrer par statut</label>
+                    <select id="eventStatusFilter" onchange="filterEvents()"
+                            class="w-full md:w-64 bg-deepblack/50 border border-gold/20 rounded-xl px-4 py-3 text-white focus:border-gold focus:outline-none">
+                        <option value="">Tous les statuts</option>
+                        <option value="pending">En attente</option>
+                        <option value="confirmed">Confirmé</option>
+                        <option value="cancelled">Annulé</option>
+                        <option value="completed">Terminé</option>
+                    </select>
+                </div>
+
+                <div id="eventsList" class="space-y-4">
+                    <p class="text-white/60">Chargement...</p>
+                </div>
+            </div>
+
+            <!-- Users Management -->
+            <div id="users" class="tab-content p-8">
+                <h2 class="text-3xl font-serif text-gold mb-8">Gestion des Utilisateurs</h2>
+                
+                <!-- Search -->
+                <div class="bg-richbrown/40 border border-gold/30 rounded-2xl p-6 mb-6">
+                    <label class="block text-white/80 mb-2 text-sm">Rechercher un utilisateur</label>
+                    <input type="text" id="userSearch" placeholder="Nom, email..." oninput="filterUsers()"
+                           class="w-full bg-deepblack/50 border border-gold/20 rounded-xl px-4 py-3 text-white focus:border-gold focus:outline-none">
+                </div>
+
+                <div id="usersList" class="grid grid-cols-1 gap-6">
+                    <p class="text-white/60">Chargement...</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal pour ajouter/modifier un menu -->
+    <div id="menuModal" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50 p-4">
+        <div class="bg-richbrown/90 border border-gold/30 rounded-2xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="flex items-center justify-between mb-6">
+                <h3 id="menuModalTitle" class="text-2xl font-serif text-gold">Ajouter un Menu</h3>
+                <button onclick="closeMenuModal()" class="text-white/60 hover:text-white">
+                    <i data-feather="x" width="24" height="24"></i>
+                </button>
+            </div>
+
+            <form id="menuForm" class="space-y-4">
+                <input type="hidden" id="menuId">
+                <div>
+                    <label class="block text-white/80 mb-2 font-medium">Nom du menu</label>
+                    <input type="text" id="menuName" required
+                           class="w-full bg-deepblack/50 border border-gold/20 rounded-xl px-4 py-3 text-white focus:border-gold focus:outline-none">
+                </div>
+
+                <div>
+                    <label class="block text-white/80 mb-2 font-medium">Description</label>
+                    <textarea id="menuDescription" rows="3" required
+                              class="w-full bg-deepblack/50 border border-gold/20 rounded-xl px-4 py-3 text-white focus:border-gold focus:outline-none resize-none"></textarea>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-white/80 mb-2 font-medium">Catégorie</label>
+                        <select id="menuCategory" required
+                                class="w-full bg-deepblack/50 border border-gold/20 rounded-xl px-4 py-3 text-white focus:border-gold focus:outline-none">
+                            <option value="">Sélectionner...</option>
+                            <option value="entrees">Entrées</option>
+                            <option value="plats">Plats principaux</option>
+                            <option value="desserts">Desserts</option>
+                            <option value="boissons">Boissons</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-white/80 mb-2 font-medium">Prix (FCFA)</label>
+                        <input type="number" id="menuPrice" step="0.01" required
+                               class="w-full bg-deepblack/50 border border-gold/20 rounded-xl px-4 py-3 text-white focus:border-gold focus:outline-none">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-white/80 mb-2 font-medium">URL de l'image</label>
+                    <input type="url" id="menuImage" placeholder="/assets/imgs/image.png"
+                           class="w-full bg-deepblack/50 border border-gold/20 rounded-xl px-4 py-3 text-white focus:border-gold focus:outline-none">
+                </div>
+
+                <div class="flex items-center gap-3">
+                    <input type="checkbox" id="menuAvailable" checked
+                           class="w-5 h-5 text-gold bg-deepblack/50 border-gold/20 rounded focus:ring-gold focus:ring-2">
+                    <label for="menuAvailable" class="text-white/80">Disponible</label>
+                </div>
+
+                <div class="flex gap-3 pt-4">
+                    <button type="submit" class="flex-1 px-6 py-3 bg-gold hover:bg-gold/90 text-deepblack font-medium rounded-xl transition-all">
+                        Enregistrer
+                    </button>
+                    <button type="button" onclick="closeMenuModal()" class="px-6 py-3 bg-richbrown/60 hover:bg-richbrown/80 text-white font-medium rounded-xl transition-all">
+                        Annuler
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal pour voir les détails d'un utilisateur -->
+    <div id="userDetailsModal" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50 p-4">
+        <div class="bg-richbrown/90 border border-gold/30 rounded-2xl p-8 max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="text-2xl font-serif text-gold">Détails de l'utilisateur</h3>
+                <button onclick="closeUserDetailsModal()" class="text-white/60 hover:text-white">
+                    <i data-feather="x" width="24" height="24"></i>
+                </button>
+            </div>
+
+            <div id="userDetailsContent"></div>
+        </div>
+    </div>
+
+    <!-- Modal pour envoyer un message -->
+    <div id="messageModal" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50 p-4">
+        <div class="bg-richbrown/90 border border-gold/30 rounded-2xl p-8 max-w-2xl w-full">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="text-2xl font-serif text-gold">Envoyer un message</h3>
+                <button onclick="closeMessageModal()" class="text-white/60 hover:text-white">
+                    <i data-feather="x" width="24" height="24"></i>
+                </button>
+            </div>
+
+            <form id="messageForm" class="space-y-4">
+                <input type="hidden" id="messageUserId">
+                <div>
+                    <label class="block text-white/80 mb-2 font-medium">Destinataire</label>
+                    <input type="text" id="messageUserName" readonly
+                           class="w-full bg-deepblack/30 border border-gold/20 rounded-xl px-4 py-3 text-white/60">
+                </div>
+
+                <div>
+                    <label class="block text-white/80 mb-2 font-medium">Sujet</label>
+                    <input type="text" id="messageSubject" required
+                           class="w-full bg-deepblack/50 border border-gold/20 rounded-xl px-4 py-3 text-white focus:border-gold focus:outline-none">
+                </div>
+
+                <div>
+                    <label class="block text-white/80 mb-2 font-medium">Message</label>
+                    <textarea id="messageContent" rows="5" required
+                              class="w-full bg-deepblack/50 border border-gold/20 rounded-xl px-4 py-3 text-white focus:border-gold focus:outline-none resize-none"></textarea>
+                </div>
+
+                <div class="flex gap-3 pt-4">
+                    <button type="submit" class="flex-1 px-6 py-3 bg-gold hover:bg-gold/90 text-deepblack font-medium rounded-xl transition-all">
+                        Envoyer
+                    </button>
+                    <button type="button" onclick="closeMessageModal()" class="px-6 py-3 bg-richbrown/60 hover:bg-richbrown/80 text-white font-medium rounded-xl transition-all">
+                        Annuler
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal pour changement de statut de réservation -->
+    <div id="reservationStatusModal" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50 p-4">
+        <div class="bg-richbrown/90 border border-gold/30 rounded-2xl p-8 max-w-lg w-full">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="text-2xl font-serif text-gold">Changer le statut</h3>
+                <button onclick="closeReservationStatusModal()" class="text-white/60 hover:text-white">
+                    <i data-feather="x" width="24" height="24"></i>
+                </button>
+            </div>
+
+            <form id="reservationStatusForm" class="space-y-4">
+                <input type="hidden" id="reservationUserId">
+                <input type="hidden" id="reservationId">
+
+                <div>
+                    <label class="block text-white/80 mb-2 font-medium">Nouveau statut</label>
+                    <select id="reservationNewStatus" required
+                            class="w-full bg-deepblack/50 border border-gold/20 rounded-xl px-4 py-3 text-white focus:border-gold focus:outline-none">
+                        <option value="">Sélectionner...</option>
+                        <option value="pending">En attente</option>
+                        <option value="confirmed">Confirmé</option>
+                        <option value="cancelled">Annulé</option>
+                        <option value="completed">Terminé</option>
+                    </select>
+                </div>
+
+                <div class="flex gap-3 pt-4">
+                    <button type="submit" class="flex-1 px-6 py-3 bg-gold hover:bg-gold/90 text-deepblack font-medium rounded-xl transition-all">
+                        Mettre à jour
+                    </button>
+                    <button type="button" onclick="closeReservationStatusModal()" class="px-6 py-3 bg-richbrown/60 hover:bg-richbrown/80 text-white font-medium rounded-xl transition-all">
+                        Annuler
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="/js/admin-script.js"></script>
+    <script src="/components/utils.js"></script>
+</body>
+</html>

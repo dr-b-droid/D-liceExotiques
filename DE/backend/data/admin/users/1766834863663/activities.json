@@ -1,0 +1,141 @@
+{
+  "activities": [
+    {
+      "id": "1768073228899",
+      "type": "order_update",
+      "icon": "shopping-bag",
+      "description": "Commande #ORD-1766 livrée",
+      "timestamp": "2026-01-10T19:27:08.899Z"
+    },
+    {
+      "id": "1768073225453",
+      "type": "order_update",
+      "icon": "shopping-bag",
+      "description": "Commande #ORD-1766 confirmée",
+      "timestamp": "2026-01-10T19:27:05.453Z"
+    },
+    {
+      "id": "1768072982099",
+      "type": "reservation_update",
+      "icon": "calendar",
+      "description": "Réservation annulée pour le 30/12/2025",
+      "timestamp": "2026-01-10T19:23:02.099Z"
+    },
+    {
+      "id": "1768071097580",
+      "type": "admin_message",
+      "icon": "message-circle",
+      "description": "votre réservation a été accepté",
+      "adminMessage": true,
+      "subject": "reservation",
+      "timestamp": "2026-01-10T18:51:37.580Z"
+    },
+    {
+      "id": "1768070932193",
+      "type": "reservation_update",
+      "icon": "calendar",
+      "description": "Réservation confirmée pour le 30/12/2025",
+      "timestamp": "2026-01-10T18:48:52.193Z"
+    },
+    {
+      "id": "1768070926386",
+      "type": "reservation_update",
+      "icon": "calendar",
+      "description": "Réservation annulée pour le 30/12/2025",
+      "timestamp": "2026-01-10T18:48:46.386Z"
+    },
+    {
+      "id": "1767656617460",
+      "type": "order_update",
+      "icon": "shopping-bag",
+      "description": "Commande #ORD-1766 en livraison",
+      "timestamp": "2026-01-05T23:43:37.460Z"
+    },
+    {
+      "id": "1767655761817",
+      "type": "order_update",
+      "icon": "shopping-bag",
+      "description": "Commande #ORD-1766 confirmée",
+      "timestamp": "2026-01-05T23:29:21.817Z"
+    },
+    {
+      "id": "1767655756427",
+      "type": "order_update",
+      "icon": "shopping-bag",
+      "description": "Commande #ORD-1766 confirmée",
+      "timestamp": "2026-01-05T23:29:16.427Z"
+    },
+    {
+      "id": "1767655751076",
+      "type": "order_update",
+      "icon": "shopping-bag",
+      "description": "Commande #ORD-1766 en livraison",
+      "timestamp": "2026-01-05T23:29:11.076Z"
+    },
+    {
+      "id": "1767235922648",
+      "type": "order_update",
+      "icon": "shopping-bag",
+      "description": "Commande #ORD-1766 confirmée",
+      "timestamp": "2026-01-01T02:52:02.648Z"
+    },
+    {
+      "id": "1767235894272",
+      "type": "event_update",
+      "icon": "star",
+      "description": "Demande d'événement confirmée: deuil",
+      "timestamp": "2026-01-01T02:51:34.272Z"
+    },
+    {
+      "id": "1767235885408",
+      "type": "event_update",
+      "icon": "star",
+      "description": "Demande d'événement confirmée: Séminaire",
+      "timestamp": "2026-01-01T02:51:25.408Z"
+    },
+    {
+      "id": "1766908986964",
+      "type": "event_request",
+      "title": "Demande d'événement",
+      "description": "deuil - 2025-12-30",
+      "date": "2025-12-28T08:03:06.961Z",
+      "icon": "star",
+      "color": "africanred",
+      "relatedId": "EVT-1766908986953",
+      "createdAt": "2025-12-28T08:03:06.961Z"
+    },
+    {
+      "id": "1766842274220",
+      "type": "event_request",
+      "title": "Demande d'événement",
+      "description": "Séminaire - 2025-12-28",
+      "date": "2025-12-27T13:31:14.218Z",
+      "icon": "star",
+      "color": "africanred",
+      "relatedId": "EVT-1766842274213",
+      "createdAt": "2025-12-27T13:31:14.218Z"
+    },
+    {
+      "id": "1766842087138",
+      "type": "reservation_confirmed",
+      "title": "Réservation confirmée",
+      "description": "Table pour 4 - 2025-12-30, 16:30",
+      "date": "2025-12-27T13:28:07.135Z",
+      "icon": "calendar",
+      "color": "gold",
+      "relatedId": "RES-1766842087130",
+      "createdAt": "2025-12-27T13:28:07.135Z"
+    },
+    {
+      "id": "1766841951778",
+      "type": "order_placed",
+      "title": "Nouvelle commande",
+      "description": "Commande ORD-1766841951769 - 13150.00  fcfa",
+      "date": "2025-12-27T13:25:51.775Z",
+      "icon": "shopping-bag",
+      "color": "gold",
+      "relatedId": "ORD-1766841951769",
+      "createdAt": "2025-12-27T13:25:51.775Z"
+    }
+  ]
+}
